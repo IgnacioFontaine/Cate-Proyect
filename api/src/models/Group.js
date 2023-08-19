@@ -21,17 +21,19 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      released: {
+      release_date: {
         type: DataTypes.STRING,
       },
       manager: {
         type: DataTypes.ARRAY(DataTypes.STRING),
-        allowNull: false,
       },
       principal_img: {
         type: DataTypes.STRING,
       },
       all_img: {
+        type: DataTypes.ARRAY(DataTypes.STRING),
+      },
+      status: {
         type: DataTypes.STRING,
       },
     },

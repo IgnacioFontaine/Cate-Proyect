@@ -1,6 +1,10 @@
 //Router de Cate
 const { Router } = require("express");
-const { getGroups } = require("../controllers/groupController");
+const {
+  getGroups,
+  createGroupDB,
+  groupsByName,
+} = require("../controllers/groupController");
 // const { Group } = require("../db");
 
 const router = Router();
@@ -12,11 +16,14 @@ router.get("/", async (req, res) => {
     let groups;
     if (name) {
       //Si existe nombre, buscarlo
-      groups = await groupByName(name);
+      groups = await groupsByName(name);
       return res.status(200).json(groups);
     } else {
       //Si no se manda un nombre, buscar todos
       groups = await getGroups();
+      if (groups.length === 0) {
+        return res.status(200).send("No se encontraron Grupos");
+      }
       return res.status(200).json(groups);
     }
   } catch (error) {
@@ -27,17 +34,25 @@ router.get("/", async (req, res) => {
 //Crear Grupo
 router.post("/", async (req, res) => {
   try {
-    const { name, released, principal_img, meaning, all_img, manager } =
-      req.body;
+    const {
+      name,
+      release_date,
+      meaning,
+      manager,
+      principal_img,
+      all_img,
+      status,
+    } = req.body;
 
     //Crearlo
     const newGroup = await createGroupDB(
       name,
-      principal_img,
       meaning,
-      released,
+      manager,
+      principal_img,
       all_img,
-      manager
+      status,
+      release_date
     );
 
     //Retornarlo
@@ -46,27 +61,5 @@ router.post("/", async (req, res) => {
     return res.status(400).json({ error: error.message });
   }
 });
-
-// router.update("/", async (req, res) => {
-//   try {
-//     const { name, released, principal_img, meaning, all_img, manager } =
-//       req.body;
-
-//     //Crearlo
-//     const updatedGroup = await updateGroupDB(
-//       name,
-//       principal_img,
-//       meaning,
-//       released,
-//       all_img,
-//       manager
-//     );
-
-//     //Retornarlo
-//     res.status(200).json(updatedGroup);
-//   } catch (error) {
-//     return res.status(400).json({ error: error.message });
-//   }
-// });
 
 module.exports = router;

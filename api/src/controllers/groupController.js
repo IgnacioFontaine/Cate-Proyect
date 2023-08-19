@@ -1,4 +1,5 @@
-const Group = require("../models/Group");
+const { Group } = require("../db");
+const { Op } = require("sequelize");
 
 //Obtener géneros
 const getGroups = async () => {
@@ -10,72 +11,122 @@ const getGroups = async () => {
   }
 };
 
-//CAMBIAR A GROUPBYNAME()
+const createGroupDB = async (
+  name,
+  meaning,
+  manager,
+  principal_img,
+  all_img,
+  status,
+  release_date
+) => {
+  try {
+    let newGroup = Group.create({
+      name,
+      meaning,
+      manager,
+      principal_img,
+      all_img,
+      status,
+      release_date,
+    });
+    return newGroup;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
 
-// const videogameByName = async (name) => {
-//   try {
-//     let foundGame = [];
-//     //Búsuqeda en la API
-//     let api = await axios.get(
-//       `https://api.rawg.io/api/games?search=${name}&key=${API_KEY}`
-//     );
-//     api = api.data.results;
-//     if (api.length) {
-//       api = api.splice(0, 15);
+const groupsByName = async (name) => {
+  try {
+    let foundGroup = [];
 
-//       api = api?.map((game) => {
-//         return {
-//           id: game.id,
-//           name: game.name,
-//           genres: game.genres?.map((gen) => gen.name),
-//           platforms: game.platfoms?.map((plat) => plat.platform.name),
-//           released: game.released,
-//           img: game.background_image,
-//           rating: game.rating,
-//           description: game.description,
-//         };
-//       });
-//     }
-//     //Búsqueda en la DB
-//     let results = await Videogame.findAll({
-//       where: {
-//         //Busca los nombres similares a lo enviado en "name"
-//         name: { [Op.iLike]: `%${name}%` },
-//       },
-//       include: {
-//         model: Genre,
-//         attributes: ["name"],
-//         through: {
-//           attributes: [],
-//         },
-//       },
-//     });
-//     if (results.length) {
-//       results = results.map((game) => {
-//         return {
-//           id: game.id,
-//           name: game.name,
-//           genres: game.genres?.map((gen) => gen.name),
-//           platforms: game.platfoms,
-//           released: game.released,
-//           img: game.background_image,
-//           rating: game.rating,
-//           description: game.description,
-//         };
-//       });
-//     }
+    //Búsqueda en la DB
+    let results = await Group.findAll({
+      where: {
+        //Busca los nombres similares a lo enviado en "name"
+        name: { [Op.iLike]: `%${name}%` },
+      },
+      include: {
+        model: Group,
+        attributes: ["name"],
+        through: {
+          attributes: [],
+        },
+      },
+    });
+    if (results.length) {
+      results = results.map((group) => {
+        return {
+          id: group.id,
+          name: group.name,
+          released: group.released,
+          meaning: group.meaning,
+          manager: group.manager,
+          principal_img: group.principal_img,
+          all_img: group.all_img,
+          status: group.status,
+        };
+      });
+    }
 
-//     foundGame = [...api, ...results];
+    foundGroup = [...results];
 
-//     //Si found Game no tiene nada, no encontró el juego
-//     if (foundGame.length == 0)
-//       throw new Error("No fue posible encontrar el Videojuego");
-//     return foundGame;
-//   } catch (error) {
-//     throw new Error(error);
-//   }
-// };
+    //Si foundGroup no tiene nada, no encontró el juego
+    if (foundGroup.length == 0)
+      throw new Error("No fue posible encontrar el Grupo");
+    return foundGroup;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+const groupByStatus = async (status) => {
+  try {
+    let foundGroup = [];
+
+    //Búsqueda en la DB
+    let results = await Group.findAll({
+      where: {
+        //Busca los nombres similares a lo enviado en "name"
+        status: status,
+      },
+      include: {
+        model: Group,
+        attributes: ["name"],
+        through: {
+          attributes: [],
+        },
+      },
+    });
+    if (results.length) {
+      results = results.map((group) => {
+        return {
+          id: group.id,
+          name: group.name,
+          released: group.released,
+          meaning: group.meaning,
+          manager: group.manager,
+          principal_img: group.principal_img,
+          all_img: group.all_img,
+          status: group.status,
+        };
+      });
+    }
+
+    foundGroup = [...results];
+
+    //Si foundGroup no tiene nada, no encontró el juego
+    if (foundGroup.length == 0)
+      throw new Error("No fue posible encontrar Grupos con ese estado");
+    return foundGroup;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
 
 module.exports = {
   getGroups,
+  createGroupDB,
+  groupsByName,
+  groupByStatus,
 };
