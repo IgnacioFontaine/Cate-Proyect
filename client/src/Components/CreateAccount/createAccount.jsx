@@ -7,9 +7,15 @@ const CreateAccount = () => {
       </div>
       <div>
         <form>
-          <label placeholder="Nombre completo"></label>
-          <label placeholder=""></label>
-          <label placeholder=""></label>
+          <label placeholder="Nombre completo...">
+            <input type="text" />
+          </label>
+          <label placeholder="Contraseña...">
+            <input type="password" />
+          </label>
+          <label placeholder="Email...">
+            <input type="text" />
+          </label>
         </form>
       </div>
     </div>
