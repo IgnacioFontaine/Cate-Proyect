@@ -2,7 +2,10 @@
 const initialState = {
   users: [],
   all_groups: [],
-  sort_groups: [],
+  cate_groups: [],
+  iniciate_groups: [],
+  family_groups: [],
+  detail: [],
   error: false,
   errormsg: {},
 };
