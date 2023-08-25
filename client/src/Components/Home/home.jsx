@@ -1,31 +1,64 @@
 import Cards from "../Cards/cards";
-import NavBar from "../NavBar/navBar";
+import Menu from "../Menu/menu";
 import { Link } from "react-router-dom";
 
 const Home = () => {
+  const groups = [
+    {
+      id: 1,
+      name: "GRUPO",
+      release_date: "1999-01-01",
+      meaning: "Significado Del Grupo",
+      manager: ["Dele 1-Dele2"],
+      principal_img: "img1",
+      status: "Cate",
+    },
+    {
+      id: 2,
+      name: "GRUPO2",
+      release_date: "1999-03-03",
+      meaning: "Significado Del Grupo2",
+      manager: ["Dele 3- Dele 4"],
+      principal_img: "img2",
+      status: "Iniciate",
+    },
+  ];
   return (
     <div>
       <div>
         <div>
-          <NavBar />
-        </div>
-        <div>
           <div>
-            <h1>Grupo Juvenil La Catedral</h1>
-            <p>Gracias por invitarnos a ser Libres, Felices y Santos</p>
+            <div>
+              <h1>Grupo Juvenil La Catedral</h1>
+              <p>Gracias por invitarnos a ser Libres, Felices y Santos</p>
+            </div>
+            <div>
+              <Menu />
+            </div>
           </div>
           <div>
             <div>
-              <label>Cate</label>
-              <p>Aquí van los grupos Cate</p>
+              <div>
+                <label>Cate</label>
+                <p>Aquí van los grupos Cate</p>
+              </div>
+              <div>
+                <Cards groups={groups} />
+              </div>
             </div>
             <div>
-              <label>Iniciate</label>
-              <p>Aquí van los grupos Iniciate</p>
+              <div>
+                <label>Iniciate</label>
+                <p>Aquí van los grupos Iniciate</p>
+              </div>
+              <div>{/* <Card /> */}</div>
             </div>
             <div>
-              <label>Familia</label>
-              <p>Aquí van los grupos Egresados</p>
+              <div>
+                <label>Familia</label>
+                <p>Aquí van los grupos Egresados</p>
+              </div>
+              <div>{/* <Card /> */}</div>
             </div>
           </div>
           <div>

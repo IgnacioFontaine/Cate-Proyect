@@ -1,15 +1,16 @@
-const Card = (group) => {
+const Card = ({ group }) => {
+  const { id, name, release_date, principal_img, meaning } = group;
   return (
     <div>
-      <div>
-        <img src={group.principal_img} alt={group.name} />
-      </div>
-      <div>
-        <h1>{group.name && group.name}</h1>
-        <h2>{group.meaning && group.meaning}</h2>
-        <h2>{group.release_date && group.release_date}</h2>
-        <h2>{group.manager && group.manager}</h2>
-        <h2>{group.status && group.status}</h2>
+      <div key={id && id}>
+        <div>
+          <img src={principal_img} alt={name} />
+        </div>
+        <div>
+          <h1>{name && name}</h1>
+          <h2>{meaning && meaning}</h2>
+          <h2>{release_date && release_date}</h2>
+        </div>
       </div>
     </div>
   );
