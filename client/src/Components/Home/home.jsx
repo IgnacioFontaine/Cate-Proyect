@@ -3,26 +3,6 @@ import Menu from "../Menu/menu";
 import { Link } from "react-router-dom";
 
 const Home = () => {
-  const groups = [
-    {
-      id: 1,
-      name: "GRUPO",
-      release_date: "1999-01-01",
-      meaning: "Significado Del Grupo",
-      manager: ["Dele 1-Dele2"],
-      principal_img: "img1",
-      status: "Cate",
-    },
-    {
-      id: 2,
-      name: "GRUPO2",
-      release_date: "1999-03-03",
-      meaning: "Significado Del Grupo2",
-      manager: ["Dele 3- Dele 4"],
-      principal_img: "img2",
-      status: "Iniciate",
-    },
-  ];
   return (
     <div>
       <div>
@@ -39,29 +19,19 @@ const Home = () => {
           <div>
             <div>
               <div>
-                <label>Cate</label>
-                <p>Aquí van los grupos Cate</p>
-              </div>
-              <div>
-                <Cards groups={groups} />
+                <label>¿Quiénes Somos?</label>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Eligendi eos corporis vitae quia harum possimus deleniti amet
+                  voluptatibus soluta saepe, rem consequatur deserunt debitis
+                  tempore doloribus hic repellendus error porro? Lorem ipsum
+                  dolor sit amet consectetur adipisicing elit. Incidunt facilis
+                  fugit possimus animi dolore, modi repellendus recusandae quae,
+                  cupiditate accusamus voluptatum quia deserunt ut vel voluptate
+                  voluptatibus. Doloremque, dicta ab!
+                </p>
               </div>
             </div>
-            <div>
-              <div>
-                <label>Iniciate</label>
-                <p>Aquí van los grupos Iniciate</p>
-              </div>
-              <div>{/* <Card /> */}</div>
-            </div>
-            <div>
-              <div>
-                <label>Familia</label>
-                <p>Aquí van los grupos Egresados</p>
-              </div>
-              <div>{/* <Card /> */}</div>
-            </div>
-          </div>
-          <div>
             <div>
               <h2>Apostolate</h2>
               <p>
