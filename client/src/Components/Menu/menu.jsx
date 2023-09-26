@@ -1,13 +1,16 @@
-const Menu = () => {
+import {Box, Menu, MenuItem } from "@mui/material"
+
+const Menu_list = () => {
   return (
-    <div>
-      <ul>
-        <li>Grupos Cate</li>
-        <li>Grupos Iniciate</li>
-        <li>Apostolate</li>
-      </ul>
-    </div>
+    <Box>
+      <Menu>
+        <MenuItem>Grupos Cate</MenuItem>
+        <MenuItem>Grupos Iniciate</MenuItem>
+        <MenuItem>Grupos Familia</MenuItem>
+        <MenuItem>Apostolate</MenuItem>
+      </Menu>
+    </Box>
   );
 };
 
-export default Menu;
+export default Menu_list;

@@ -1,13 +1,13 @@
-import Card from "../Card/card";
+// import Card from "../Card/card";
 
-const Cards = ({ groups }) => {
-  const listGroups = groups;
-  return (
-    <div>
-      {listGroups &&
-        listGroups.map((group) => <Card group={group} key={group.id} />)}
-    </div>
-  );
-};
+// const Cards = ({ groups }) => {
+//   const listGroups = groups;
+//   return (
+//     <div>
+//       {listGroups &&
+//         listGroups.map((group) => <Card group={group} key={group.id} />)}
+//     </div>
+//   );
+// };
 
-export default Cards;
+// export default Cards;
