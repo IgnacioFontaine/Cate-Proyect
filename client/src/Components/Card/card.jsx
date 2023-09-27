@@ -1,19 +1,23 @@
-// const Card = ({ group }) => {
-//   const { id, name, release_date, principal_img, meaning } = group;
-//   return (
-//     <div>
-//       <div key={id && id}>
-//         <div>
-//           <img src={principal_img} alt={name} />
-//         </div>
-//         <div>
-//           <h1>{name && name}</h1>
-//           <h2>{meaning && meaning}</h2>
-//           <h2>{release_date && release_date}</h2>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
+import { Box, Typography } from "@mui/material"
 
-// export default Card;
+const Card = (group) => {
+  const { id, name, meaning,release_date,acronym,manager  } = group;
+  return (
+    <Box>
+      <Box key={id && id}>
+        <Box>
+          <Typography variant="h2">{acronym && acronym}</Typography>
+        </Box>
+        <Box>
+          <Typography>{name && name}</Typography>
+          <Typography>{meaning && meaning}</Typography>
+          <Typography>{release_date && release_date}</Typography>
+          <Typography>{release_date && release_date}</Typography>
+          <Typography>{manager && manager}</Typography>
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+
+export default Card;

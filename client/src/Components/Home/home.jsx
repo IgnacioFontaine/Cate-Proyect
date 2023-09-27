@@ -2,10 +2,21 @@ import {Box,Typography } from "@mui/material"
 import Menu from "../Menu/menu";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllGroups } from "../../Redux/actions";
 
 
 const Home = () => {
+  const dispatch = useDispatch()
   const navigate = useNavigate()
+
+  useEffect(() => {
+    dispatch(getAllGroups());
+  }, []);
+  const allGroups = useSelector((state) => state.all_groups)
+  console.log(allGroups);
+
   return (
     <Box sx={{height:"90vh", boxShadow:4}}>
       <Box>

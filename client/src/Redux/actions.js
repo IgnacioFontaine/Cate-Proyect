@@ -7,7 +7,7 @@ export const GET_ALL_USERS = "GET_ALL_USERS";
 export const CREATE_GROUP = "CREATE_GROUP";
 export const CREATE_USER = "CREATE_USER";
 export const CLEAN_DETAIL = "CLEAN_DETAIL";
-export const SEARCH_GROUP_BY_STATUS = "SEARCH_GROUP_BY_STATUS";
+// export const SEARCH_GROUP_BY_STATUS = "SEARCH_GROUP_BY_STATUS";
 export const SEARCH_CATE_GROUPS = "SEARCH_CATE_GROUPS";
 export const SEARCH_INICIATE_GROUPS = "SEARCH_INICIATE_GROUPS";
 export const SEARCH_FAMILIA_GROUPS = "SEARCH_FAMILIA_GROUPS";
@@ -32,18 +32,18 @@ export const searchGroupByName = (name) => async (dispatch) => {
   }
 };
 
-export const searchGroupByStatus = (status) => async (dispatch) => {
-  try {
-    let result = await axios.get(`http://localhost:3001/group?status=${status}`);
-    return dispatch({ type: SEARCH_GROUP_BY_STATUS, payload: result.data });
-  } catch (error) {
-    return dispatch({ type: ERROR, payload: error });
-  }
-};
+// export const searchGroupByStatus = (status) => async (dispatch) => {
+//   try {
+//     let result = await axios.get(`http://localhost:3001/group?status=${status}`);
+//     return dispatch({ type: SEARCH_GROUP_BY_STATUS, payload: result.data });
+//   } catch (error) {
+//     return dispatch({ type: ERROR, payload: error });
+//   }
+// };
 
 export const searchCateGroups = () => async (dispatch) => {
   try {
-    let result = await axios.get(`http://localhost:3001/group?status=Cate`);
+    let result = await axios.get(`http://localhost:3001/groups?status=Cate`);
     return dispatch({ type: SEARCH_CATE_GROUPS, payload: result.data });
   } catch (error) {
     return dispatch({ type: ERROR, payload: error });
