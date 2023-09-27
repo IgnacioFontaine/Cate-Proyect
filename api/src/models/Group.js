@@ -27,15 +27,12 @@ module.exports = (sequelize) => {
       manager: {
         type: DataTypes.ARRAY(DataTypes.STRING),
       },
-      principal_img: {
-        type: DataTypes.STRING,
-      },
-      all_img: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
-      },
       status: {
         type: DataTypes.STRING,
       },
+      acronym: {
+        type: DataTypes.STRING,
+      }
     },
     { timestamps: false }
   );

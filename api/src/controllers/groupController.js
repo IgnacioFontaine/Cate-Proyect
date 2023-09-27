@@ -14,21 +14,21 @@ const getGroups = async () => {
 const createGroupDB = async (
   name,
   meaning,
+  release_date,
   manager,
-  principal_img,
-  all_img,
   status,
-  release_date
+  acronym
+  
 ) => {
   try {
     let newGroup = Group.create({
       name,
       meaning,
-      manager,
-      principal_img,
-      all_img,
-      status,
       release_date,
+      manager,
+      status,
+      acronym
+      
     });
     return newGroup;
   } catch (error) {
@@ -46,25 +46,24 @@ const groupsByName = async (name) => {
         //Busca los nombres similares a lo enviado en "name"
         name: { [Op.iLike]: `%${name}%` },
       },
-      include: {
-        model: Group,
-        attributes: ["name"],
-        through: {
-          attributes: [],
-        },
-      },
+      // include: {
+      //   model: Group,
+      //   attributes: ["name"],
+      //   through: {
+      //     attributes: [],
+      //   },
+      // },
     });
     if (results.length) {
       results = results.map((group) => {
         return {
           id: group.id,
           name: group.name,
-          released: group.released,
-          meaning: group.meaning,
+          meaning: group.meaning,               
+          release_date: group.release_date,
           manager: group.manager,
-          principal_img: group.principal_img,
-          all_img: group.all_img,
           status: group.status,
+          acronym:group.acronym
         };
       });
     }
@@ -80,7 +79,7 @@ const groupsByName = async (name) => {
   }
 };
 
-const groupByStatus = async (status) => {
+const groupsByStatus = async (status) => {
   try {
     let foundGroup = [];
 
@@ -90,25 +89,24 @@ const groupByStatus = async (status) => {
         //Busca los nombres similares a lo enviado en "name"
         status: status,
       },
-      include: {
-        model: Group,
-        attributes: ["name"],
-        through: {
-          attributes: [],
-        },
-      },
+      // include: {
+      //   model: Group,
+      //   attributes: ["name"],
+      //   through: {
+      //     attributes: [],
+      //   },
+      // },
     });
     if (results.length) {
       results = results.map((group) => {
         return {
           id: group.id,
           name: group.name,
-          released: group.released,
-          meaning: group.meaning,
+          meaning: group.meaning,               
+          release_date: group.release_date,
           manager: group.manager,
-          principal_img: group.principal_img,
-          all_img: group.all_img,
           status: group.status,
+          acronym: group.acronym
         };
       });
     }
@@ -128,5 +126,5 @@ module.exports = {
   getGroups,
   createGroupDB,
   groupsByName,
-  groupByStatus,
+  groupsByStatus,
 };
