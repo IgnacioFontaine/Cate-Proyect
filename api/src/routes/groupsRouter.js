@@ -21,6 +21,7 @@ router.get("/", async (req, res) => {
       groups = await groupsByName(name);
       return res.status(200).json(groups);
     } else if (status) {
+      //Si existe status, buscarlo
       groups = await groupsByStatus(status);
       return res.status(200).json(groups);
     } else {

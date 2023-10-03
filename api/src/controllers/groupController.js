@@ -70,7 +70,7 @@ const groupsByName = async (name) => {
 
     foundGroup = [...results];
 
-    //Si foundGroup no tiene nada, no encontró el juego
+    //Si foundGroup no tiene nada, no encontró el grupo
     if (foundGroup.length == 0)
       throw new Error("No fue posible encontrar el Grupo");
     return foundGroup;
@@ -113,7 +113,7 @@ const groupsByStatus = async (status) => {
 
     foundGroup = [...results];
 
-    //Si foundGroup no tiene nada, no encontró el juego
+    //Si foundGroup no tiene nada, no encontró el grupo
     if (foundGroup.length == 0)
       throw new Error("No fue posible encontrar Grupos con ese estado");
     return foundGroup;
