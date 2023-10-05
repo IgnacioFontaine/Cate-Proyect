@@ -1,9 +1,20 @@
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box, Button, TableHead, TextField, Typography } from "@mui/material";
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import {createGroup} from "../../Redux/actions"
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { createGroup, getAllGroups } from "../../Redux/actions"
+import {
+  Icon,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableRow,
+} from "@mui/material";
+import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
+import EditRoundedIcon from "@mui/icons-material/EditRounded";
 
 const EMPTY_FORM = {
   name: "",
@@ -20,6 +31,11 @@ const CrearGrupo = () => {
   const [button] = useState({
     value: "Create",
   });
+
+  useEffect(() => {
+    dispatch(getAllGroups());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch]);
   
 
   const handleChange = (event) =>
@@ -58,9 +74,13 @@ const CrearGrupo = () => {
     return true;
   };
 
+  const Groups = useSelector((state)=>state?.all_groups)
+
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <Box sx={{display:"flex", gap:"5px"}}>
+        <Box>
+        <form onSubmit={handleSubmit}>
         <Box >
           <Typography sx={{  fontSize: "2rem" }}>
            Nuevo Grupo 
@@ -150,6 +170,59 @@ const CrearGrupo = () => {
           >{button.value}</Button>
         </Box>
       </form>
+      </Box>
+      <Box>
+        <TableContainer
+          sx={{ height: "60vh",width:"28vw", overflow: "auto", pb: 1, backgroundColor:"#242424", color:"rgba(255, 255, 255, 0.87)", colorScheme:"light dark", boxShadow:1}}
+          style={{backgroundImage: 'none'}}
+          component={Paper}
+        >
+            <Table >
+              <TableHead sx={{height: "5vh", overflow: "auto", color:"black"}}>
+                <Typography variant="h4" >Grupos:</Typography>
+              </TableHead>
+            <TableBody style={{}}>
+              {Groups?.map((row) => (
+                <TableRow key={row?.id}>
+                  <TableCell
+                    sx={{ display: "flex", justifyContent: "space-between" }}
+                  >
+                    <Box>{row?.name}</Box>
+                    <Box sx={{ display: "flex" }}>
+                      <Box sx={{ cursor: "pointer" }}>
+                        <Icon>
+                          <DeleteForeverRoundedIcon
+                            onClick={() => null
+                              // handleDelete(row?.id)
+                            }
+                          ></DeleteForeverRoundedIcon>
+                        </Icon>
+                      </Box>
+                      <Box>
+                        <Icon sx={{cursor:'pointer'}}>
+                          <EditRoundedIcon
+                            onClick={() => null
+                              // handleUpdate(
+                              //   row?.id,
+                              //   row?.name,
+                              //   row?.email,
+                              //   row?.phone,
+                              //   row?.apikey,
+                              //   row?.srcName
+                              // )
+                            }
+                          ></EditRoundedIcon>
+                        </Icon>
+                      </Box>
+                    </Box>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Box>
+      </Box>
     </>
   );
 };
