@@ -1,7 +1,7 @@
 import Card from "../Card/card";
 import { Box } from "@mui/material"
 
-const Cards = ({ groups }) => {
+const Cards = ( groups ) => {
   const listGroups = groups;
   return (
     <Box>

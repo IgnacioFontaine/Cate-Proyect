@@ -4,7 +4,7 @@ const Menu_list = () => {
   return (
     <Box>
       <Menu>
-        <MenuItem>Grupos Cate</MenuItem>
+        <MenuItem >Grupos Cate</MenuItem>
         <MenuItem>Grupos Iniciate</MenuItem>
         <MenuItem>Grupos Familia</MenuItem>
         <MenuItem>Apostolate</MenuItem>

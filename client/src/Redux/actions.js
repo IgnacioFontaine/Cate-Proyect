@@ -52,7 +52,7 @@ export const searchCateGroups = () => async (dispatch) => {
 
 export const searchIniciateGroups = () => async (dispatch) => {
   try {
-    let result = await axios.get(`http://localhost:3001/group?status=Iniciate`);
+    let result = await axios.get(`http://localhost:3001/groups?status=Iniciate`);
     return dispatch({ type: SEARCH_INICIATE_GROUPS, payload: result.data });
   } catch (error) {
     return dispatch({ type: ERROR, payload: error });
@@ -61,7 +61,7 @@ export const searchIniciateGroups = () => async (dispatch) => {
 
 export const searchFamiliaGroups = () => async (dispatch) => {
   try {
-    let result = await axios.get(`http://localhost:3001/group?status=Familia`);
+    let result = await axios.get(`http://localhost:3001/groups?status=Familia`);
     return dispatch({ type: SEARCH_FAMILIA_GROUPS, payload: result.data });
   } catch (error) {
     return dispatch({ type: ERROR, payload: error });
@@ -69,7 +69,7 @@ export const searchFamiliaGroups = () => async (dispatch) => {
 };
 
 export const createGroup = (group) => async (dispatch) => {
-  const newGroup = await axios.post("http://localhost:3001/group", group);
+  const newGroup = await axios.post("http://localhost:3001/groups", group);
   return dispatch({ type: CREATE_GROUP, payload: newGroup.data });
 };
 

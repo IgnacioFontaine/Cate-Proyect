@@ -1,21 +1,24 @@
 import {Box,Typography } from "@mui/material"
-import Menu from "../Menu/menu";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllGroups } from "../../Redux/actions";
+import {  searchCateGroups, searchIniciateGroups, searchFamiliaGroups } from "../../Redux/actions";
+import Card from "../Card/card";
+import InstagramIcon from '@mui/icons-material/Instagram';
+// import Menu from "../Menu/menu";
 
 
 const Home = () => {
   const dispatch = useDispatch()
-  const navigate = useNavigate()
 
   useEffect(() => {
-    dispatch(getAllGroups());
-  }, []);
-  const allGroups = useSelector((state) => state.all_groups)
-  console.log(allGroups);
+    dispatch(searchCateGroups())
+    dispatch(searchIniciateGroups())
+    dispatch(searchFamiliaGroups())
+  }, [dispatch]);
+  const gruposCate = useSelector((state) => state.cate_groups)
+  const gruposIniciate = useSelector((state) => state.iniciate_groups)
+  const gruposFamilia = useSelector((state) => state.family_groups)
 
   return (
     <Box sx={{height:"90vh", boxShadow:4}}>
@@ -26,76 +29,75 @@ const Home = () => {
               <Typography variant="h1">Grupo Juvenil La Catedral</Typography>
               <Typography variant="h4">Gracias por invitarnos a ser Libres, Felices y Santos</Typography>
             </Box>
-            <Box>
+            {/* <Box>
               <Menu />
-            </Box>
+            </Box> */}
           </Box>
           <Box>
             <Box>
-              <Box sx={{ boxShadow: 1 }}>
+              <Box sx={{ boxShadow: 1, margin:2 }}>
                 <Box>
-                  <Typography variant="h3">¿Quiénes Somos?</Typography>
-                  <Typography variant="h4">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Eligendi eos corporis vitae quia harum possimus deleniti amet
-                  voluptatibus soluta saepe, rem consequatur deserunt debitis
-                  tempore doloribus hic repellendus error porro? Lorem ipsum
-                  dolor sit amet consectetur adipisicing elit. Incidunt facilis
-                  fugit possimus animi dolore, modi repellendus recusandae quae,
-                  cupiditate accusamus voluptatum quia deserunt ut vel voluptate
-                  voluptatibus. Doloremque, dicta ab!</Typography>
+                  <Typography variant="h4">¿Quiénes Somos?</Typography>
+                  <Typography variant="body1">El grupo juvenil la Catedral es un grupo católico administrado por jóvenes y para jóvenes, este grupo está compuesto por 3 partes que conforman una gran familia! La Cate en la cual se encuentran los grupos cuyos jóvenes están cursando de 4to a 1er año de la Facultad, El Iniciate cuyoos jóvenes cursan de 1ero a 3er año y el Apostolate compuesto por aquellos mayores a 18 años con ganas de Misionar! </Typography>
+                </Box>
+                <Box >
+                  <Typography variant="h4">¿Dónde encontrarnos? <Link
+                to="https://www.instagram.com/grupocate/"
+                target="_blanck"
+              >
+                <InstagramIcon fontSize="large" />
+                  </Link></Typography>
+                  <Typography variant="body2">Podés encontrarnos en redes sociales o en el colegio San José/Santa Teresa en el centro los días sábado, las inscripciones se realizan a principio de año y avisamos via Instagram! </Typography>
+                  
+                  
+                  
                 </Box>
                 <Box>
-                  <Typography variant="h3">¿Dónde encontrarnos?</Typography>
-                  <Typography variant="h4">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Eligendi eos corporis vitae quia harum possimus deleniti amet
-                  voluptatibus soluta saepe, rem consequatur deserunt debitis
-                  tempore doloribus hic repellendus error porro? Lorem ipsum
-                  dolor sit amet consectetur adipisicing elit. Incidunt facilis
-                  fugit possimus animi dolore, modi repellendus recusandae quae,
-                  cupiditate accusamus voluptatum quia deserunt ut vel voluptate
-                  voluptatibus. Doloremque, dicta ab!</Typography>
-                </Box>
-                <Box>
-                  <Typography variant="h3">Nuestras actividades</Typography>
-                  <Typography variant="h4">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Eligendi eos corporis vitae quia harum possimus deleniti amet
-                  voluptatibus soluta saepe, rem consequatur deserunt debitis
-                  tempore doloribus hic repellendus error porro? Lorem ipsum
-                  dolor sit amet consectetur adipisicing elit. Incidunt facilis
-                  fugit possimus animi dolore, modi repellendus recusandae quae,
-                  cupiditate accusamus voluptatum quia deserunt ut vel voluptate
-                  voluptatibus. Doloremque, dicta ab!</Typography>
+                  <Typography variant="h4">Nuestras actividades</Typography>
+                  <Typography variant="body2">Nos encontramos en un colegio en el centro los días Sábado para compartir la merienda y conversar un tema en especial, este tema es elegido por los Delegados a cargo de cada grupo, finalizando las actividades con una Misa en La Catedral de Córdoba</Typography>
                 </Box>
               </Box>
             </Box>
-            <Box >
+            <Box sx={{margin:1}}>
               <Box >
-                <Typography>Navegá por los grupos de La Cate:</Typography>
-              </Box>
-              <Box>
-                <button onClick={() => { navigate("/cate") }}>Grupos Cate</button>
-                <button onClick={() => { navigate("/iniciate") }}>Grupos Iniciate</button>
-                <button onClick={()=>{navigate("/familia")}}>Grupos Familia</button>
+                <Typography>Navegá por todos los grupos de La Cate:</Typography>
               </Box>
             </Box>
-            <Box sx={{boxShadow:1}}>
-              <Typography variant="h3">Apostolate</Typography>
-              <Typography variant="h4">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Impedit porro voluptatum id cumque deserunt, quas expedita fuga
-                dolore quod alias autem ad iusto accusamus vitae quasi
-                cupiditate praesentium facere dignissimos.</Typography>
-              <Link
+            <Box>
+              <Box sx={{gap:1, boxShadow:1, padding:0.5}}>
+                <Typography variant="h3">Grupos Cate:</Typography>
+                <Box display={"flex"}>
+                {gruposCate? gruposCate.map(group=><Card group={group} key={group.id} />):null}
+                </Box>
+              </Box>
+              <Box sx={{gap:1, boxShadow:1, padding:0.5}}>
+                <Typography variant="h3">Grupos Iniciate:</Typography>
+                <Box display={"flex"}>
+                {gruposIniciate? gruposIniciate.map(group=><Card group={group} key={group.id} />):null}
+                </Box>
+              </Box>
+              <Box sx={{gap:1, boxShadow:1, padding:0.5}}>
+                <Typography variant="h3">Grupos Familia:</Typography>
+                <Box display={"flex"}>
+                {gruposFamilia? gruposFamilia.map(group=><Card group={group} key={group.id} />):null}
+                </Box>
+              </Box>
+            </Box>
+            <Box>
+              <Box sx={{boxShadow:1}}>
+              <Typography variant="h3">Apostolate <Link
                 to="https://www.instagram.com/grupoapostolate/"
                 target="_blanck"
               >
-                <button>Intagram</button>
-              </Link>
-            </Box>
+                <InstagramIcon fontSize="large" />
+                  </Link></Typography>
+              <Typography variant="body1">Grupo misionero, abierto para todo aquel que quiera compartir esto con nosotros, por cualquier consulta no dudes en escribirnos a nuestro instagram, aquí debajo enseñamos nuestras actividades activas en este momento, Sumate!!</Typography>
+            </Box> 
             <Box >
               <Box>
                 <Box>
-                  <Typography variant="h3">Noche de Caridad</Typography>
-                  <Typography variant="h4">Todos los lunes (llueva, truene o haga -50°) nos encontramos
+                  <Typography variant="h4">Noche de Caridad</Typography>
+                  <Typography variant="body2">Todos los lunes (llueva, truene o haga -50°) nos encontramos
                     en la ⛪ Plaza San Martín, a las 🕰️ 19:30hs hasta las
                     21:30hs. Junto con la comunidad de San Juan, repartimos no
                     sólo la comida 🍲 a la gente, sino que llevamos el Evangelio
@@ -105,7 +107,7 @@ const Home = () => {
                 </Box>
                 <Box>
                   <Typography variant="h3">Los Josefinos</Typography>
-                  <Typography variant="h4">Nos encontramos en el 📍Centro Manresa (al frente de la
+                  <Typography variant="body2">Nos encontramos en el 📍Centro Manresa (al frente de la
                     Compañía). Desde ahí salimos todos juntos en 🚎 colectivo
                     para Barrio Maldonado, a la Bajada San José (No se puede ir
                     en autos). Oración🙏🏼, desayuno con los chicos 🥖🍞, apoyo
@@ -114,7 +116,7 @@ const Home = () => {
                 </Box>
                 <Box>
                   <Typography variant="h3">La Morada</Typography>
-                  <Typography variant="h4">Te invitamos a un apostolado que aunque truene 🌩️ o caiga
+                  <Typography variant="body2">Te invitamos a un apostolado que aunque truene 🌩️ o caiga
                     nieve 🌨️, siempre nos van a estar esperando❤️! La Residencia
                     La Morada es un hogar de ancianos que nos esperan por la
                     tarde para compartir un poco de charla, música, risas y
@@ -125,7 +127,7 @@ const Home = () => {
                 </Box>
                 <Box >
                   <Typography variant="h3">Catequesis</Typography>
-                  <Typography variant="h4">¡Empezamos con la catequesis! 🙏🏼 Si querés hacer la comunión
+                  <Typography variant="body2">¡Empezamos con la catequesis! 🙏🏼 Si querés hacer la comunión
                     o confirmación te esperamos el próximo sábado en el colegio
                     San José. Las inscripciones son en la secretaria de la
                     Catedral de martes a viernes de 9 a 15hs.‼️ La Catequesis
@@ -134,6 +136,7 @@ const Home = () => {
                     consulta enviar un mensaje!</Typography>
                 </Box>
               </Box>
+            </Box>
             </Box>
           </Box>
         </Box>

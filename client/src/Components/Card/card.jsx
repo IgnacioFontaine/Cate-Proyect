@@ -1,23 +1,25 @@
-import { Box, Typography } from "@mui/material"
+import { Box, Typography, Card, CardContent } from "@mui/material"
 
-const Card = (group) => {
-  const { id, name, meaning,release_date,acronym,manager  } = group;
+const MuiCard = ({group}) => {
+  const { id,name,meaning,release_date,manager,acronym } = group;
   return (
-    <Box>
-      <Box key={id && id}>
-        <Box>
-          <Typography variant="h2">{acronym && acronym}</Typography>
+    <Box height={"150px"}>
+      <Card key={id && id}>
+        <CardContent>
+          <Box>
+            <Typography>{name && name}</Typography>
+          
         </Box>
-        <Box>
-          <Typography>{name && name}</Typography>
-          <Typography>{meaning && meaning}</Typography>
-          <Typography>{release_date && release_date}</Typography>
+        <Box >
+          <Typography >{acronym && acronym}</Typography>
+          <Typography >{meaning && meaning}</Typography>
           <Typography>{release_date && release_date}</Typography>
           <Typography>{manager && manager}</Typography>
         </Box>
-      </Box>
+        </CardContent>
+      </Card>
     </Box>
   );
 };
 
-export default Card;
+export default MuiCard;

@@ -1,20 +1,25 @@
 import { Box, Typography } from "@mui/material"
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { searchCateGroups } from "../../Redux/actions";
-import Cards from "../Cards/cards"
+import {  useDispatch} from "react-redux";
+// import Cards from "../Cards/cards"
+import { getAllGroups, searchCateGroups } from "../../Redux/actions";
 
 const Cate = () => {
-  const navigate = useNavigate()
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   useEffect(() => {
-    dispatch(searchCateGroups());
+    dispatch(getAllGroups());
+    dispatch(searchCateGroups())
   }, [dispatch]);
-
-  const cateGroups = useSelector((state) => state.cate_groups)
-  console.log(cateGroups);
+  // const grupos = useSelector((state) => state.all_groups)
+  // const gruposCate = useSelector((state) => state.cate_groups)
+  
+  // console.log("-----");
+  // console.log(allGroups);
+  // console.log("-----");
+  // console.log(cateGroups);
   
   return (
     <Box>
@@ -28,14 +33,14 @@ const Cate = () => {
           illo harum ut, consequuntur laudantium, saepe minus nemo obcaecati
           praesentium excepturi veniam.
         </Typography>
-        <Box>
-          {cateGroups && (
+        <Box sx={{height:"30vh", width:"50vw", display:"flex"}}>
+          {/* {cateGroups && (
           <Cards groups={cateGroups} />
-          )}
+          )} */}
         </Box>
       </Box>
       <Box>
-        <button onClick={()=>{navigate("/")}}>Volver</button>
+        <button  onClick={()=>{navigate("/")}}>Volver</button>
       </Box>
     </Box>
   );
