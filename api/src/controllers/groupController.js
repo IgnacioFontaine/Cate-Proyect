@@ -122,9 +122,26 @@ const groupsByStatus = async (status) => {
   }
 };
 
+
+const updatedGroup = async ( id, name, meaning,release_date, manager, status, acronym) => {
+
+        const [updatedCount, updatedRows] = await Group.update(
+            { name: name, meaning: meaning,release_date : release_date ,manager: manager, status: status,acronym: acronym },
+            { where: { id } }
+        );
+        if (updatedCount === 0) {
+            throw new Error('The id was not found or it is incorrect');
+        }
+
+    return { message: "updated information" };
+};
+
+module.exports = updatedBusiness;
+
 module.exports = {
   getGroups,
   createGroupDB,
   groupsByName,
   groupsByStatus,
+  updatedGroup
 };
