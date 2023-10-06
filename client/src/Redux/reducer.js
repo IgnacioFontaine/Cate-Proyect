@@ -4,6 +4,8 @@ import {
   SEARCH_INICIATE_GROUPS,
   SEARCH_FAMILIA_GROUPS,
   CREATE_GROUP,
+  DELETE_GROUP_FAILURE,
+  DELETE_GROUP_SUCCESS,
   // SEARCH_GROUP_BY_STATUS,
   // SEARCH_GROUP_BY_NAME,
   // GET_ALL_USERS,
@@ -58,6 +60,12 @@ const reducer = (state = initialState, action) => {
           errormsg: action.payload,
         };
       }
+    case DELETE_GROUP_SUCCESS:
+      return {
+        ...state, all_groups: state.all_groups.filter(all_groups => all_groups.id !== action.payload)
+      };
+    case DELETE_GROUP_FAILURE:
+      return state;
     case CLEAN_DETAIL:
       return {
         ...state,

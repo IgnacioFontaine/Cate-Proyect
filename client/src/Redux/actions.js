@@ -5,6 +5,8 @@ export const GET_ALL_GROUPS = "GET_ALL_GROUPS";
 export const SEARCH_GROUP_BY_NAME = "SEARCH_GROUP_BY_NAME";
 export const GET_ALL_USERS = "GET_ALL_USERS";
 export const CREATE_GROUP = "CREATE_GROUP";
+export const DELETE_GROUP_SUCCESS = "DELETE_GROUP_SUCCESS";
+export const DELETE_GROUP_FAILURE = "DELETE_GROUP_FAILURE";
 export const CREATE_USER = "CREATE_USER";
 export const CLEAN_DETAIL = "CLEAN_DETAIL";
 // export const SEARCH_GROUP_BY_STATUS = "SEARCH_GROUP_BY_STATUS";
@@ -71,6 +73,24 @@ export const searchFamiliaGroups = () => async (dispatch) => {
 export const createGroup = (group) => async (dispatch) => {
   const newGroup = await axios.post("http://localhost:3001/groups", group);
   return dispatch({ type: CREATE_GROUP, payload: newGroup.data });
+};
+
+export const deleteGroup = (id) => {
+  return async (dispatch) => {
+    try {
+      await axios.delete(`/deleteGroup/${id}`);
+      
+      dispatch({
+        type: DELETE_GROUP_SUCCESS,
+        payload: id
+      });
+    } catch (error) {
+      dispatch({
+        type: DELETE_GROUP_FAILURE,
+        payload: error.message
+      });
+    }
+  };
 };
 
 export const createUser = (user) => async (dispatch) => {
