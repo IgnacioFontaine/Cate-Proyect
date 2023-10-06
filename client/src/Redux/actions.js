@@ -7,6 +7,8 @@ export const GET_ALL_USERS = "GET_ALL_USERS";
 export const CREATE_GROUP = "CREATE_GROUP";
 export const DELETE_GROUP_SUCCESS = "DELETE_GROUP_SUCCESS";
 export const DELETE_GROUP_FAILURE = "DELETE_GROUP_FAILURE";
+export const UPDATE_BUSINESS_SUCCESS = "UPDATE_BUSINESS_SUCCESS";
+export const UPDATE_BUSINESS_FAILURE = "UPDATE_BUSINESS_FAILURE";
 export const CREATE_USER = "CREATE_USER";
 export const CLEAN_DETAIL = "CLEAN_DETAIL";
 // export const SEARCH_GROUP_BY_STATUS = "SEARCH_GROUP_BY_STATUS";
@@ -78,7 +80,7 @@ export const createGroup = (group) => async (dispatch) => {
 export const deleteGroup = (id) => {
   return async (dispatch) => {
     try {
-      await axios.delete(`/deleteGroup/${id}`);
+      await axios.delete(`http://localhost:3001/groups/eliminar/${id}`);
       
       dispatch({
         type: DELETE_GROUP_SUCCESS,
@@ -87,6 +89,25 @@ export const deleteGroup = (id) => {
     } catch (error) {
       dispatch({
         type: DELETE_GROUP_FAILURE,
+        payload: error.message
+      });
+    }
+  };
+};
+
+export const updateGroup = (id, updatedFields) => {
+  return async (dispatch) => {
+    try {
+
+      await axios.put(`http://localhost:3001/groups/modificar/${id}`, updatedFields);
+
+      dispatch({
+        type: UPDATE_BUSINESS_SUCCESS,
+        payload: updatedFields
+      });
+    } catch (error) {
+      dispatch({
+        type: UPDATE_BUSINESS_FAILURE,
         payload: error.message
       });
     }
