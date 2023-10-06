@@ -136,12 +136,21 @@ const updatedGroup = async ( id, name, meaning,release_date, manager, status, ac
     return { message: "updated information" };
 };
 
-module.exports = updatedBusiness;
+const deleteGroup = async (id) => {
+
+    const findGroup = await Group.findOne({ where: { id } });
+    
+    if (!findGroup) throw error("Providen id not found");
+
+    await findGroup.destroy();
+    return {message: "Delete success"}
+};
 
 module.exports = {
   getGroups,
   createGroupDB,
   groupsByName,
   groupsByStatus,
-  updatedGroup
+  updatedGroup,
+  deleteGroup
 };
