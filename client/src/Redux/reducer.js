@@ -6,6 +6,8 @@ import {
   CREATE_GROUP,
   DELETE_GROUP_FAILURE,
   DELETE_GROUP_SUCCESS,
+  UPDATE_GROUP_FAILURE,
+  UPDATE_GROUP_SUCCESS,
   // SEARCH_GROUP_BY_STATUS,
   // SEARCH_GROUP_BY_NAME,
   // GET_ALL_USERS,
@@ -60,6 +62,25 @@ const reducer = (state = initialState, action) => {
           errormsg: action.payload,
         };
       }
+    case UPDATE_GROUP_SUCCESS:
+      state.all_groups.forEach((group)=>{
+                if(group.id === action.payload.id){
+                    group.name = action.payload.name
+                    group.meaning = action.payload.meaning
+                    group.release_date = action.payload.release_date
+                    group.manager = action.payload.manager
+                    group.status = action.payload.status
+                    group.acronym = action.payload.acronym
+                }
+            })
+        return {
+            ...state,
+            all_groups: [...state.all_groups]
+        };
+    
+    case UPDATE_GROUP_FAILURE:
+      return state;
+    
     case DELETE_GROUP_SUCCESS:
       return {
         ...state, all_groups: state.all_groups.filter(all_groups => all_groups.id !== action.payload)

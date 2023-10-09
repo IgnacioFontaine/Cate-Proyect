@@ -7,8 +7,8 @@ export const GET_ALL_USERS = "GET_ALL_USERS";
 export const CREATE_GROUP = "CREATE_GROUP";
 export const DELETE_GROUP_SUCCESS = "DELETE_GROUP_SUCCESS";
 export const DELETE_GROUP_FAILURE = "DELETE_GROUP_FAILURE";
-export const UPDATE_BUSINESS_SUCCESS = "UPDATE_BUSINESS_SUCCESS";
-export const UPDATE_BUSINESS_FAILURE = "UPDATE_BUSINESS_FAILURE";
+export const UPDATE_GROUP_SUCCESS = "UPDATE_GROUP_SUCCESS";
+export const UPDATE_GROUP_FAILURE = "UPDATE_GROUP_FAILURE";
 export const CREATE_USER = "CREATE_USER";
 export const CLEAN_DETAIL = "CLEAN_DETAIL";
 // export const SEARCH_GROUP_BY_STATUS = "SEARCH_GROUP_BY_STATUS";
@@ -102,12 +102,12 @@ export const updateGroup = (id, updatedFields) => {
       await axios.put(`http://localhost:3001/groups/modificar/${id}`, updatedFields);
 
       dispatch({
-        type: UPDATE_BUSINESS_SUCCESS,
+        type: UPDATE_GROUP_SUCCESS,
         payload: updatedFields
       });
     } catch (error) {
       dispatch({
-        type: UPDATE_BUSINESS_FAILURE,
+        type: UPDATE_GROUP_FAILURE,
         payload: error.message
       });
     }

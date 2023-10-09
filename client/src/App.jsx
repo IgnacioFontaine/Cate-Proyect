@@ -6,11 +6,13 @@ import Oracion from "./Components/Oracion/oracion";
 import Familia from "./Components/Familia/familia";
 import Iniciate from "./Components/Iniciate/iniciate";
 import Login from "./Components/Login/login"
-import  CrearGrupo  from "./Components/CreateGroup/crearGrupo";
+import CrearGrupo from "./Components/CreateGroup/crearGrupo";
+import NavBar from "./Components/NavBar/navbar";
 
 function App() {
   return (
-    <div>
+    <div> 
+      <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />

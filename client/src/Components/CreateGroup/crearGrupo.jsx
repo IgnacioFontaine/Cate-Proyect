@@ -3,7 +3,7 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createGroup, getAllGroups } from "../../Redux/actions"
+import { createGroup, getAllGroups, deleteGroup, updateGroup  } from "../../Redux/actions"
 import {
   Icon,
   Paper,
@@ -28,8 +28,8 @@ const EMPTY_FORM = {
 const CrearGrupo = () => {
   const dispatch = useDispatch()
   const [formData, setFormData] = useState(EMPTY_FORM);
-  const [button] = useState({
-    value: "Create",
+  const [button, setButton] = useState({
+    value: "Crear",
   });
 
   useEffect(() => {
@@ -40,28 +40,43 @@ const CrearGrupo = () => {
 
   const handleChange = (event) =>
     setFormData({ ...formData, [event.target.name]: event.target.value });
+  
+  const handleSubmit = (event) => {
+    event.preventDefault();
+ 
+      if (button.value === "Crear") {
+        dispatch(createGroup(formData));
+      } else {
+        dispatch(updateGroup(formData.id, formData));
+        setButton({ value: "Crear" });
+      }
+      setFormData(EMPTY_FORM);
+
+  };
 
   // const handleSubmit = (event) => {
   //   event.preventDefault();
-  //   const validateErrors = validation(formData);
-  //   setErrors(validateErrors);
+  //   dispatch(createGroup(formData));
+  //   console.log(formData);
+  // }
 
-  //   if (Object.keys(validateErrors).length === 0) {
-  //     if (button.value === "Create") {
-  //       dispatch(createGroup(formData));
-  //     } else {
-  //       dispatch(updateBGroup(formData.id, formData));
-  //       setButton({ value: "Create" });
-  //     }
-  //     setFormData(EMPTY_FORM);
-  //   }
-  // };
+    const handleUpdate = (id, name, meaning, release_date, manager, status, acronym) => {
+    setFormData({
+      id: id,
+      name: name,
+      meaning: meaning,
+      release_date: release_date,
+      manager: manager,
+      status: status,
+      acronym:acronym
+    });
+    setButton({ value: "Modificar" });
+  };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    dispatch(createGroup(formData));
-    console.log(formData);
-  }
+  const handleDelete = (id) => {
+    dispatch(deleteGroup(id));
+    setFormData(EMPTY_FORM);
+  };
 
   const disableSubmitButton = () => {
     if (
@@ -192,24 +207,23 @@ const CrearGrupo = () => {
                       <Box sx={{ cursor: "pointer" }}>
                         <Icon>
                           <DeleteForeverRoundedIcon
-                            onClick={() => null
-                              // handleDelete(row?.id)
-                            }
+                            onClick={() => handleDelete(row?.id)}
                           ></DeleteForeverRoundedIcon>
                         </Icon>
                       </Box>
                       <Box>
                         <Icon sx={{cursor:'pointer'}}>
                           <EditRoundedIcon
-                            onClick={() => null
-                              // handleUpdate(
-                              //   row?.id,
-                              //   row?.name,
-                              //   row?.email,
-                              //   row?.phone,
-                              //   row?.apikey,
-                              //   row?.srcName
-                              // )
+                            onClick={() => 
+                              handleUpdate(
+                                row?.id,
+                                row?.name,
+                                row?.meaning,
+                                row?.release_date,
+                                row?.manager,
+                                row?.status,
+                                row?.acronym
+                              )
                             }
                           ></EditRoundedIcon>
                         </Icon>

@@ -2,10 +2,9 @@ import {Box,Typography } from "@mui/material"
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {  searchCateGroups, searchIniciateGroups, searchFamiliaGroups } from "../../Redux/actions";
+import {  searchCateGroups, searchIniciateGroups} from "../../Redux/actions";
 import Card from "../Card/card";
 import InstagramIcon from '@mui/icons-material/Instagram';
-// import Menu from "../Menu/menu";
 
 
 const Home = () => {
@@ -14,25 +13,15 @@ const Home = () => {
   useEffect(() => {
     dispatch(searchCateGroups())
     dispatch(searchIniciateGroups())
-    dispatch(searchFamiliaGroups())
   }, [dispatch]);
   const gruposCate = useSelector((state) => state.cate_groups)
   const gruposIniciate = useSelector((state) => state.iniciate_groups)
-  const gruposFamilia = useSelector((state) => state.family_groups)
+  
 
   return (
     <Box sx={{height:"90vh", boxShadow:4}}>
       <Box>
         <Box>
-          <Box>
-            <Box>
-              <Typography variant="h1">Grupo Juvenil La Catedral</Typography>
-              <Typography variant="h4">Gracias por invitarnos a ser Libres, Felices y Santos</Typography>
-            </Box>
-            {/* <Box>
-              <Menu />
-            </Box> */}
-          </Box>
           <Box>
             <Box>
               <Box sx={{ boxShadow: 1, margin:2 }}>
@@ -74,12 +63,6 @@ const Home = () => {
                 <Typography variant="h3">Grupos Iniciate:</Typography>
                 <Box display={"flex"}>
                 {gruposIniciate? gruposIniciate.map(group=><Card group={group} key={group.id} />):null}
-                </Box>
-              </Box>
-              <Box sx={{gap:1, boxShadow:1, padding:0.5}}>
-                <Typography variant="h3">Grupos Familia:</Typography>
-                <Box display={"flex"}>
-                {gruposFamilia? gruposFamilia.map(group=><Card group={group} key={group.id} />):null}
                 </Box>
               </Box>
             </Box>
