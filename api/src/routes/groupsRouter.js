@@ -69,7 +69,8 @@ router.post("/", async (req, res) => {
 });
 
 router.put("/modificar/:id", async (req, res) => {
-    const { id } = req.params;
+  const { id } = req.params;
+  
     const { name, meaning, release_date, manager, status, acronym  } = req.body;
     try {
         if (!id) return res.status(404).json({ error: 'Id not found' });
