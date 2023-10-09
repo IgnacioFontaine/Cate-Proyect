@@ -1,16 +1,48 @@
-import {Box, Menu, MenuItem } from "@mui/material"
+import * as React from 'react';
+import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import Fade from '@mui/material/Fade';
+import { useNavigate } from 'react-router-dom';
+import MenuIcon from '@mui/icons-material/Menu';
 
-const Menu_list = () => {
+export default function FadeMenu() {
+  const navigate = useNavigate()
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
-    <Box>
-      <Menu>
-        <MenuItem >Grupos Cate</MenuItem>
-        <MenuItem>Grupos Iniciate</MenuItem>
-        <MenuItem>Grupos Familia</MenuItem>
-        <MenuItem>Apostolate</MenuItem>
+    <div>
+      <Button
+        id="fade-button"
+        aria-controls={open ? 'fade-menu' : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? 'true' : undefined}
+        onClick={handleClick}
+      >
+        <MenuIcon />
+      </Button>
+      <Menu
+        id="fade-menu"
+        MenuListProps={{
+          'aria-labelledby': 'fade-button',
+        }}
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        TransitionComponent={Fade}
+      >
+        <MenuItem onClick={()=>navigate("/")}>Apostolate</MenuItem>
+        <MenuItem onClick={()=>navigate("/familia")}>Egresados</MenuItem>
+        <MenuItem onClick={()=>navigate("/creargrupo")}>Nuevo Grupo</MenuItem>
+        <MenuItem onClick={()=>navigate("/oracion")}>Oración</MenuItem>
       </Menu>
-    </Box>
+    </div>
   );
-};
-
-export default Menu_list;
+}
