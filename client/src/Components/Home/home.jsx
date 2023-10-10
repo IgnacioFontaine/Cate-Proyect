@@ -19,7 +19,7 @@ const Home = () => {
   
 
   return (
-    <Box sx={{height:"90vh", boxShadow:4}}>
+    <Box sx={{height:"120vh", boxShadow:4}}>
       <Box>
         <Box>
           <Box>
@@ -37,9 +37,6 @@ const Home = () => {
                 <InstagramIcon fontSize="large" />
                   </Link></Typography>
                   <Typography variant="body2">Podés encontrarnos en redes sociales o en el colegio San José/Santa Teresa en el centro los días sábado, las inscripciones se realizan a principio de año y avisamos via Instagram! </Typography>
-                  
-                  
-                  
                 </Box>
                 <Box>
                   <Typography variant="h4">Nuestras actividades</Typography>
@@ -49,18 +46,18 @@ const Home = () => {
             </Box>
             <Box sx={{margin:1}}>
               <Box >
-                <Typography>Navegá por todos los grupos de La Cate:</Typography>
+                <Typography variant="h4">Navegá por todos los grupos de La Cate:</Typography>
               </Box>
             </Box>
-            <Box>
-              <Box sx={{gap:1, boxShadow:1, padding:0.5}}>
-                <Typography variant="h3">Grupos Cate:</Typography>
+            <Box sx={{height:"50vh"}}>
+              <Box sx={{gap:1, boxShadow:1, padding:0.5, height:"40vh"}}>
+                <Typography variant="h4">Grupos Cate:</Typography>
                 <Box display={"flex"}>
                 {gruposCate? gruposCate.map(group=><Card group={group} key={group.id} />):null}
                 </Box>
               </Box>
-              <Box sx={{gap:1, boxShadow:1, padding:0.5}}>
-                <Typography variant="h3">Grupos Iniciate:</Typography>
+              <Box sx={{gap:1, boxShadow:1, padding:0.5, height:"30vh"}}>
+                <Typography variant="h4">Grupos Iniciate:</Typography>
                 <Box display={"flex"}>
                 {gruposIniciate? gruposIniciate.map(group=><Card group={group} key={group.id} />):null}
                 </Box>

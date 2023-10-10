@@ -1,6 +1,5 @@
 import { Box, Typography, Paper, Container } from "@mui/material"
 
-
 export default function GuestFooter() {
   return (
     <Paper sx={{marginTop: 'calc(10% + 60px)',
@@ -9,21 +8,21 @@ export default function GuestFooter() {
     background:"none",
     bottom: 0,
     textAlign: "center",
+      display: "flex",
+    flexDirection:"column",
+    justifyContent:"center"
     
     }} component="footer" square variant="outlined">
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" sx={{display:"flex", textAlign:"center"}}>
         <Box
           sx={{
             flexGrow: 1,
             justifyContent: "center",
             display: "flex",
-            my:1
+            my: 1,
+            color:"initial"
           }}
-        >
-          Grupo Juvenil la Catedral
-            {/* <div>
-            <Image priority src="/Logo.svg" width={75} height={30} alt="Logo" />
-            </div> */}
+        >Todos los derechos reservados
         </Box>
 
         <Box
