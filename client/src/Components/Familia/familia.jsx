@@ -24,7 +24,6 @@ const Familia = () => {
         </Typography>
       </Box>
       <Box sx={{ gap: 1, boxShadow: 1, padding: 0.5 }}>
-        
         <Typography variant="h3">Grupos ex Cate:</Typography>
         <Box display={"flex"}>
         {gruposFamilia? gruposFamilia.map(group=><Card group={group} key={group.id} />):null}

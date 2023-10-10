@@ -42,7 +42,8 @@ export default function FadeMenu() {
         <MenuItem onClick={()=>navigate("/apostolate")}>Apostolate</MenuItem>
         <MenuItem onClick={()=>navigate("/familia")}>Egresados</MenuItem>
         <MenuItem onClick={()=>navigate("/creargrupo")}>Nuevo Grupo</MenuItem>
-        <MenuItem onClick={()=>navigate("/oracion")}>Oración</MenuItem>
+        <MenuItem onClick={() => navigate("/oracion")}>Oración</MenuItem>
+        <MenuItem onClick={()=>navigate("/login")}>Comando</MenuItem>
       </Menu>
     </div>
   );
