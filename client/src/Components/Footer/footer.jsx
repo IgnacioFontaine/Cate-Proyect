@@ -1,33 +1,44 @@
-import { Box, Link, Typography } from "@mui/material";
-import InstagramIcon from '@mui/icons-material/Instagram';
+import { Box, Typography, Paper, Container } from "@mui/material"
 
-function Copyright() {
+
+export default function GuestFooter() {
   return (
-    <Typography>
-      {"© "}
-      <Link href="https://www.instagram.com/grupocate/" target="_blanck"><InstagramIcon /></Link>
-      {" " + new Date().getFullYear()}
-    </Typography>
-  );
-}
+    <Paper sx={{marginTop: 'calc(10% + 60px)',
+    width: '75%',
+    position: 'fixed',
+    background:"none",
+    bottom: 0,
+    textAlign: "center",
+    
+    }} component="footer" square variant="outlined">
+      <Container maxWidth="lg">
+        <Box
+          sx={{
+            flexGrow: 1,
+            justifyContent: "center",
+            display: "flex",
+            my:1
+          }}
+        >
+          Grupo Juvenil la Catedral
+            {/* <div>
+            <Image priority src="/Logo.svg" width={75} height={30} alt="Logo" />
+            </div> */}
+        </Box>
 
-// const useStyles = makeStyles((theme) => ({
-//   footer: {
-//     padding: theme.spacing(6),
-//   },
-// }));
-
-export default function Footer() {
-
-  return (
-    <footer >
-      <Box sx={{direction:"end", display:"flex", }}>
-        <Typography variant="h6">Grupo Juvenil la Catedral</Typography>
-        <Typography variant="subtitle1" color="textSecondary">
-          Todos los derechos reservados
-        </Typography>
-        <Copyright />
-      </Box>
-    </footer>
+        <Box
+          sx={{
+            flexGrow: 1,
+            justifyContent: "center",
+            display: "flex",
+            mb: 1,
+          }}
+        >
+          <Typography variant="caption" color="initial">
+            Copyright ©2023. [] Limited
+          </Typography>
+        </Box>
+      </Container>
+    </Paper>
   );
 }

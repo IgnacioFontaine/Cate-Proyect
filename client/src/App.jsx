@@ -8,7 +8,8 @@ import Iniciate from "./Components/Iniciate/iniciate";
 import Login from "./Components/Login/login"
 import CrearGrupo from "./Components/CreateGroup/crearGrupo";
 import NavBar from "./Components/NavBar/navbar";
-// import Footer from "./Components/Footer/footer";
+import Apostolate from "./Components/Apostolate/apostolate";
+import Footer from "./Components/Footer/footer";
 
 function App() {
   return (
@@ -17,13 +18,14 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/creargrupo" element={<CrearGrupo />} />
         <Route path="/cate" element={<Cate />} />
-        <Route path="/iniciate" element={<Iniciate />} />
+        <Route path="/apostolate" element={<Apostolate />} />
         <Route path="/familia" element={<Familia />} />
+        <Route path="/creargrupo" element={<CrearGrupo />} />
+        <Route path="/iniciate" element={<Iniciate />} />
         <Route path="/oracion" element={<Oracion />} />
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }
