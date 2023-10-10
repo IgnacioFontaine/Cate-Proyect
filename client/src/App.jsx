@@ -8,6 +8,7 @@ import Iniciate from "./Components/Iniciate/iniciate";
 import Login from "./Components/Login/login"
 import CrearGrupo from "./Components/CreateGroup/crearGrupo";
 import NavBar from "./Components/NavBar/navbar";
+// import Footer from "./Components/Footer/footer";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/familia" element={<Familia />} />
         <Route path="/oracion" element={<Oracion />} />
       </Routes>
+      {/* <Footer /> */}
     </div>
   );
 }
