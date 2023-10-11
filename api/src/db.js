@@ -18,7 +18,6 @@ const basename = path.basename(__filename);
 
 const modelDefiners = [];
 
-// Leemos todos los archivos de la carpeta Models, los requerimos y agregamos al arreglo modelDefiners
 fs.readdirSync(path.join(__dirname, "/models"))
   .filter(
     (file) =>
@@ -40,10 +39,11 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { User, Group } = sequelize.models;
+const { User, Group, Patrullero } = sequelize.models;
 
 // Relaciones
-User.hasMany(Group);
+Group.hasMany(Patrullero);
+Patrullero.hasOne(Group);
 
 module.exports = {
   ...sequelize.models,
