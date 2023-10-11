@@ -10,6 +10,7 @@ import CrearGrupo from "./Components/CreateGroup/crearGrupo";
 import NavBar from "./Components/NavBar/navbar";
 import Apostolate from "./Components/Apostolate/apostolate";
 import Footer from "./Components/Footer/footer";
+import Error from "./Components/Error/error";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/creargrupo" element={<CrearGrupo />} />
         <Route path="/iniciate" element={<Iniciate />} />
         <Route path="/oracion" element={<Oracion />} />
+        <Route path="*" element={<Error />} />
       </Routes>
       <Footer />
     </div>
