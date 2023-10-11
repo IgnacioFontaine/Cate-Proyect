@@ -1,7 +1,7 @@
 //Router de Cate
 const { Router } = require("express");
 const {
-  patrullerosPosGrupo,
+  patrullerosPorGrupo,
   traerPatrulleros,
   crearPatrulleroDB,
   modificarPatrullero,
@@ -13,12 +13,13 @@ const router = Router();
 //Obtener Grupos
 router.get("/", async (req, res) => {
   try {
+    
     const { grupo } = req.query;
 
     let patrulleros;
     if (grupo) {
       //Si existe grupo, buscarlo
-      patrulleros = await patrullerosPosGrupo(grupo);
+      patrulleros = await patrullerosPorGrupo(grupo);
       return res.status(200).json(patrulleros);
 
     } else {
