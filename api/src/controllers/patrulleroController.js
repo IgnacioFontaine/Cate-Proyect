@@ -10,8 +10,15 @@ const traerPatrulleros = async () => {
   }
 }
 
-const patrullerosPorGrupo = async () => {
-  null
+const patrullerosPorGrupo = async (grupo) => {
+  try {
+    let patrulleros = await Patrullero.findAll({
+      where:{grupo:grupo}
+    });
+    return patrulleros;
+  } catch (error) {
+    throw new Error(error);
+  }
 }
 
 const crearPatrulleroDB = async (name, cuotas) => {
@@ -19,14 +26,12 @@ const crearPatrulleroDB = async (name, cuotas) => {
     let nuevoPatrullero = Patrullero.create({
       name,
       cuotas
-      
     });
     return nuevoPatrullero;
   } catch (error) {
     throw new Error(error);
   }
 };
-
 
 
 const modificarPatrullero = async (id, name, cuotas) => {
@@ -44,7 +49,7 @@ const modificarPatrullero = async (id, name, cuotas) => {
 const eliminarPatrullero = async (id) => {
       const encontrarPatrullero = await Patrullero.findOne({ where: { id } });
     
-    if (!encontrarPatrullero) throw error("Providen id not found");
+    if (!encontrarPatrullero) throw error("Id enviado no encontrado");
 
     await encontrarPatrullero.destroy();
     return {message: "Patrullero Eliminado"}
