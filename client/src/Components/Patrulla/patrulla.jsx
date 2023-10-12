@@ -19,7 +19,8 @@ const Patrulla = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
   
-  const Groups = useSelector((state)=>state?.all_groups)
+  const Groups = useSelector((state) => state?.all_groups)
+  const Patrulleros = [{name:"test1", cuotas:"02/09"},{name:"test2", cuotas:"05/09"},{name:"test3", cuotas:"01/09"},{name:"test4", cuotas:"09/09"},{name:"test6", cuotas:"05/09"}]
   
   return (
     <Box>
@@ -45,6 +46,26 @@ const Patrulla = () => {
               ))}
             </TableBody>
           </Table>
+        </TableContainer>
+        <TableContainer>
+          <TableHead>
+            <Typography>Grupo seleccionado:</Typography>
+            <Typography>Patrulleros</Typography>
+          </TableHead>
+          <TableBody style={{}}>
+            {Patrulleros?.map((row) => (
+                <TableRow key={row?.id}>
+                  <TableCell
+                    sx={{ display: "flex", justifyContent: "space-between" }}
+                  >
+                  <Box>{row?.name}</Box>
+                  <Box>{row?.cuotas}</Box>
+                  </TableCell>
+                </TableRow>
+              ))}
+            
+            
+          </TableBody>
         </TableContainer>
       </Box>
 

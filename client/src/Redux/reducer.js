@@ -8,12 +8,12 @@ import {
   DELETE_GROUP_SUCCESS,
   UPDATE_GROUP_FAILURE,
   UPDATE_GROUP_SUCCESS,
-  // SEARCH_GROUP_BY_STATUS,
+  CLEAN_DETAIL,
+  ERROR,
+    // SEARCH_GROUP_BY_STATUS,
   // SEARCH_GROUP_BY_NAME,
   // GET_ALL_USERS,
   // CREATE_USER,
-  CLEAN_DETAIL,
-  ERROR,
 } from "./actions";
 
 //Config initialState
@@ -24,6 +24,8 @@ const initialState = {
   iniciate_groups: [],
   family_groups: [],
   detail: [],
+  all_patrulleros: [],
+  patrulleros_por_grupo:[],
   error: false,
   errormsg: {},
 };
