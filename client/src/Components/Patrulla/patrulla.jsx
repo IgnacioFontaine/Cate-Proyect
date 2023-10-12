@@ -1,6 +1,6 @@
 import { Box, TableHead, Typography } from "@mui/material";
-import { useEffect } from "react";
-import { getAllGroups  } from "../../Redux/actions"
+import { useEffect, useState } from "react";
+import { getAllGroups, getPatrulleros  } from "../../Redux/actions"
 import { useDispatch, useSelector } from "react-redux";
 import {
   Paper,
@@ -14,11 +14,14 @@ import EditRoundedIcon from "@mui/icons-material/EditRounded";
 
 const Patrulla = () => {
   const dispatch = useDispatch()
-
-  
+  const [seleccionado, setSeleccionado] = useState({
+    nombre_grupo: "",
+    patrulleros_grupo:[]
+  });
 
   useEffect(() => {
     dispatch(getAllGroups());
+    dispatch(getPatrulleros());
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
@@ -26,7 +29,18 @@ const Patrulla = () => {
   console.log(patrulleros);
   
   const Groups = useSelector((state) => state?.all_groups)
-  const Patrulleros = [{name:"test1", cuotas:"02/09"},{name:"test2", cuotas:"05/09"},{name:"test3", cuotas:"01/09"},{name:"test4", cuotas:"09/09"},{name:"test6", cuotas:"05/09"}, {name:"test7", cuotas:"00/09"}, {name:"test8", cuotas:"02/09"}, {name:"test9", cuotas:"05/09"},{name:"test10", cuotas:"05/09"},{name:"test11", cuotas:"05/09"}]
+  // const Patrulleros = [{name:"test1", cuotas:"02/09"},{name:"test2", cuotas:"05/09"},{name:"test3", cuotas:"01/09"},{name:"test4", cuotas:"09/09"},{name:"test6", cuotas:"05/09"}, {name:"test7", cuotas:"00/09"}, {name:"test8", cuotas:"02/09"}, {name:"test9", cuotas:"05/09"},{name:"test10", cuotas:"05/09"},{name:"test11", cuotas:"05/09"}]
+
+  const handleSelect = (nombre) => {
+    // const seleccionados_patrulleros = patrulleros?.filter((patrullero)=>patrullero.grupo == nombre)
+
+    setSeleccionado({
+      nombre_grupo: nombre,
+      patrulleros_grupo: []
+      // patrulleros_grupo: [seleccionados_patrulleros]
+    })
+    
+  }
   
   return (
     <Box>
@@ -46,7 +60,7 @@ const Patrulla = () => {
                   <TableCell
                     sx={{ display: "flex", justifyContent: "space-between" }}
                   >
-                    <Box>{row?.name}</Box>
+                    <Box sx={{cursor:"pointer"}} onClick={() => handleSelect(row.name)}>{row?.name}</Box>
                   </TableCell>
                 </TableRow>
               ))}
@@ -58,11 +72,11 @@ const Patrulla = () => {
           component={Paper}>
           <Table>
             <TableHead sx={{height: "5vh", overflow: "auto", color:"black"}}>
-            <Typography variant="h4">Grupo seleccionado:</Typography>
+              <Typography variant="h4">Grupo seleccionado:{seleccionado?.nombre_grupo}</Typography>
             <Typography variant="h6">Patrulleros</Typography>
           </TableHead>
           <TableBody style={{}}>
-            {Patrulleros?.map((row) => (
+            {patrulleros?.map((row) => (
                 <TableRow key={row?.id}>
                   <TableCell
                     sx={{ display: "flex", justifyContent: "space-between" }}
