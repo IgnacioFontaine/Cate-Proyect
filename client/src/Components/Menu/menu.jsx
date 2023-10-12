@@ -39,8 +39,9 @@ export default function FadeMenu() {
         TransitionComponent={Fade}
       >
         <MenuItem onClick={()=>navigate("/")}>Home</MenuItem>
+        <MenuItem onClick={()=>navigate("/patrulla")}>Patrulla</MenuItem>
+        <MenuItem onClick={() => navigate("/familia")}>Egresados</MenuItem>
         <MenuItem onClick={()=>navigate("/apostolate")}>Apostolate</MenuItem>
-        <MenuItem onClick={()=>navigate("/familia")}>Egresados</MenuItem>
         <MenuItem onClick={()=>navigate("/creargrupo")}>Nuevo Grupo</MenuItem>
         <MenuItem onClick={() => navigate("/oracion")}>Oración</MenuItem>
         <MenuItem onClick={()=>navigate("/login")}>Comando</MenuItem>

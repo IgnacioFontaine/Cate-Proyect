@@ -10,6 +10,7 @@ import {
   TableContainer,
   TableRow,
 } from "@mui/material";
+import EditRoundedIcon from "@mui/icons-material/EditRounded";
 
 const Patrulla = () => {
   const dispatch = useDispatch()
@@ -20,13 +21,13 @@ const Patrulla = () => {
   }, [dispatch]);
   
   const Groups = useSelector((state) => state?.all_groups)
-  const Patrulleros = [{name:"test1", cuotas:"02/09"},{name:"test2", cuotas:"05/09"},{name:"test3", cuotas:"01/09"},{name:"test4", cuotas:"09/09"},{name:"test6", cuotas:"05/09"}]
+  const Patrulleros = [{name:"test1", cuotas:"02/09"},{name:"test2", cuotas:"05/09"},{name:"test3", cuotas:"01/09"},{name:"test4", cuotas:"09/09"},{name:"test6", cuotas:"05/09"}, {name:"test7", cuotas:"00/09"}, {name:"test8", cuotas:"02/09"}, {name:"test9", cuotas:"05/09"},{name:"test10", cuotas:"05/09"},{name:"test11", cuotas:"05/09"}]
   
   return (
     <Box>
-      <Box>
+      <Box sx={{display:"flex", gap:3}}>
         <TableContainer
-          sx={{ height: "35vh",width:"28vw", overflow: "auto", pb: 1, backgroundColor:"#242424", color:"rgba(255, 255, 255, 0.87)", colorScheme:"light dark", boxShadow:1}}
+          sx={{ height: "35vh",width:"30vw", overflow: "auto", pb: 1, backgroundColor:"#242424", color:"rgba(255, 255, 255, 0.87)", colorScheme:"light dark", boxShadow:1}}
           style={{backgroundImage: 'none'}}
           component={Paper}
         >
@@ -47,8 +48,10 @@ const Patrulla = () => {
             </TableBody>
           </Table>
         </TableContainer>
-        <TableContainer>
-          <TableHead>
+        <TableContainer sx={{ height: "35vh",width:"60vw",textAlign:"center", alignItems:"center" ,overflow: "auto", pb: 1, backgroundColor:"#242424", color:"rgba(255, 255, 255, 0.87)", colorScheme:"light dark", boxShadow:1}}
+          style={{backgroundImage: 'none'}}
+          component={Paper}>
+          <TableHead sx={{height: "5vh", overflow: "auto", color:"black"}}>
             <Typography>Grupo seleccionado:</Typography>
             <Typography>Patrulleros</Typography>
           </TableHead>
@@ -60,15 +63,13 @@ const Patrulla = () => {
                   >
                   <Box>{row?.name}</Box>
                   <Box>{row?.cuotas}</Box>
+                  <EditRoundedIcon />
                   </TableCell>
                 </TableRow>
               ))}
-            
-            
           </TableBody>
         </TableContainer>
       </Box>
-
     </Box>
   )
 }

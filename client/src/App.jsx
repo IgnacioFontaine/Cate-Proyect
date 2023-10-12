@@ -9,6 +9,7 @@ import Login from "./Components/Login/login"
 import CrearGrupo from "./Components/CreateGroup/crearGrupo";
 import NavBar from "./Components/NavBar/navbar";
 import Apostolate from "./Components/Apostolate/apostolate";
+import Patrulla from "./Components/Patrulla/patrulla";
 import Footer from "./Components/Footer/footer";
 import Error from "./Components/Error/error";
 
@@ -24,6 +25,7 @@ function App() {
         <Route path="/familia" element={<Familia />} />
         <Route path="/creargrupo" element={<CrearGrupo />} />
         <Route path="/iniciate" element={<Iniciate />} />
+        <Route path="/patrulla" element={<Patrulla />} />
         <Route path="/oracion" element={<Oracion />} />
         <Route path="*" element={<Error />} />
       </Routes>
