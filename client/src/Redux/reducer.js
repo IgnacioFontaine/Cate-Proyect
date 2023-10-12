@@ -8,6 +8,7 @@ import {
   DELETE_GROUP_SUCCESS,
   UPDATE_GROUP_FAILURE,
   UPDATE_GROUP_SUCCESS,
+  GET_ALL_PATRULLEROS,
   CLEAN_DETAIL,
   ERROR,
     // SEARCH_GROUP_BY_STATUS,
@@ -89,6 +90,11 @@ const reducer = (state = initialState, action) => {
       };
     case DELETE_GROUP_FAILURE:
       return state;
+    case GET_ALL_PATRULLEROS:
+      return {
+        ...state,
+        all_patrulleros: action.payload,
+      };
     case CLEAN_DETAIL:
       return {
         ...state,
