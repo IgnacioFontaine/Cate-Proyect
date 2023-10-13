@@ -42,20 +42,24 @@ router.post("/", async (req, res) => {
     const {
       name,
       cuotas,
+      // campamento,
+      // hermanos,
       grupo
     } = req.body;
 
     //Crearlo
     const nuevoPatrullero = await crearPatrulleroDB(
       name,
-      cuotas
+      cuotas,
+      // campamento,
+      // hermanos
     );
     
-    let grupoDB = await Group.findOne({ where: { name: grupo } })
+    // let grupoDB = await Group.findOne({ where: { name: grupo } })
     // if (!grupoDB) return res.status(404).send("No se encontro el grupo")
     
     // nuevoPatrullero.addGroup(grupoDB);
-    console.log(grupoDB.dataValues.name);
+    // console.log(grupoDB.dataValues.name);
     
     //Retornarlo
     res.status(200).json(nuevoPatrullero);

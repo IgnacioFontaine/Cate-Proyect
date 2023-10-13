@@ -18,17 +18,16 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       cuotas: {
-        type: DataTypes.STRING,
-        defaultValue: "00/09"
+        type: DataTypes.STRING
       },
-      campamento: {
-        type: DataTypes.INTEGER,
-        defaultValue: 0
-      },
-      hermanos: {
-        type: DataTypes.ENUM("Si", "No"),
-        defaultValue: "No"
-      }
+      // campamento: {
+      //   type: DataTypes.STRING,
+      //   defaultValue: "0"
+      // },
+      // hermanos: {
+      //   type: DataTypes.STRING,
+      //   defaultValue: "No"
+      // }
     },
     { timestamps: false }
   );

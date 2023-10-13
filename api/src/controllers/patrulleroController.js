@@ -24,9 +24,11 @@ const patrullerosPorGrupo = async (grupo) => {
 
 const crearPatrulleroDB = async (name, cuotas) => {
   try {
-    let nuevoPatrullero = Patrullero.create({
+    let nuevoPatrullero = await Patrullero.create({
       name,
-      cuotas
+      cuotas,
+      // campamento,
+      // hermanos
     });
     return nuevoPatrullero;
   } catch (error) {

@@ -90,8 +90,8 @@ const Patrulla = () => {
                   >
                   <Box>{row?.name}</Box>
                   <Box>{row?.cuotas}</Box>
-                  <Box>{row?.campamento}</Box>
-                  <Box>{row?.hermanos}</Box>
+                  {/* <Box>{row?.campamento}</Box>
+                  <Box>{row?.hermanos}</Box> */}
                   <EditRoundedIcon />
                   </TableCell>
                 </TableRow>
