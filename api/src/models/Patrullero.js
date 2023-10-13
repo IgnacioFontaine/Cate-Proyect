@@ -14,11 +14,20 @@ module.exports = (sequelize) => {
       },
       name: {
         type: DataTypes.STRING,
-        unique: true,
+        unique: false,
         allowNull: false,
       },
       cuotas: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        defaultValue: "00/09"
+      },
+      campamento: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0
+      },
+      hermanos: {
+        type: DataTypes.ENUM("Si", "No"),
+        defaultValue: "No"
       }
     },
     { timestamps: false }

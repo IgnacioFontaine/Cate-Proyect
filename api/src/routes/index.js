@@ -10,6 +10,6 @@ const router = Router();
 // Configurar los routers
 router.use("/groups", groupsRouter);
 router.use("/users", usersRouter);
-router.use("/patrullero", patrulleroRouter);
+router.use("/patrulleros", patrulleroRouter);
 
 module.exports = router;

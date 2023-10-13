@@ -1,4 +1,5 @@
 const { Patrullero } = require("../db");
+const {Group} = require("../db");
 const { Op } = require("sequelize");
 
 const traerPatrulleros = async () => {
@@ -13,7 +14,7 @@ const traerPatrulleros = async () => {
 const patrullerosPorGrupo = async (grupo) => {
   try {
     let patrulleros = await Patrullero.findAll({
-      where:{grupo:grupo}
+      where:{Group:{name:grupo}}
     });
     return patrulleros;
   } catch (error) {
@@ -35,7 +36,7 @@ const crearPatrulleroDB = async (name, cuotas) => {
 
 
 const modificarPatrullero = async (id, name, cuotas) => {
-  const [updatedCount, updatedRows] = await Group.update(
+  const [updatedCount, updatedRows] = await Patrullero.update(
             { name: name, cuotas:cuotas },
             { where: { id } }
         );

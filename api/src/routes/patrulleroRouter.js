@@ -7,14 +7,15 @@ const {
   modificarPatrullero,
   eliminarPatrullero,
 } = require("../controllers/patrulleroController");
+const {Group} = require("../db");
 
 const router = Router();
 
 //Obtener Grupos
 router.get("/", async (req, res) => {
   try {
-    
-    const { grupo } = req.query;
+
+    const { grupo } = req.body;
 
     let patrulleros;
     if (grupo) {
@@ -35,12 +36,13 @@ router.get("/", async (req, res) => {
   }
 });
 
-//Crear Grupo
+//Crear Patrullero
 router.post("/", async (req, res) => {
   try {
     const {
       name,
-      cuotas
+      cuotas,
+      grupo
     } = req.body;
 
     //Crearlo
@@ -48,6 +50,13 @@ router.post("/", async (req, res) => {
       name,
       cuotas
     );
+    
+    let grupoDB = await Group.findOne({ where: { name: grupo } })
+    // if (!grupoDB) return res.status(404).send("No se encontro el grupo")
+    
+    // nuevoPatrullero.addGroup(grupoDB);
+    console.log(grupoDB.dataValues.name);
+    
     //Retornarlo
     res.status(200).json(nuevoPatrullero);
   } catch (error) {
