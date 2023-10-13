@@ -22,11 +22,12 @@ const patrullerosPorGrupo = async (grupo) => {
   }
 }
 
-const crearPatrulleroDB = async (name, cuotas) => {
+const crearPatrulleroDB = async (name, cuotas, grupo) => {
   try {
     let nuevoPatrullero = await Patrullero.create({
       name,
       cuotas,
+      grupo
       // campamento,
       // hermanos
     });
@@ -37,9 +38,9 @@ const crearPatrulleroDB = async (name, cuotas) => {
 };
 
 
-const modificarPatrullero = async (id, name, cuotas) => {
+const modificarPatrullero = async (id, name, cuotas, grupo) => {
   const [updatedCount, updatedRows] = await Patrullero.update(
-            { name: name, cuotas:cuotas },
+            { name: name, cuotas:cuotas, grupo:grupo },
             { where: { id } }
         );
         if (updatedCount === 0) {

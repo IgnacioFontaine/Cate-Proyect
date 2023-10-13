@@ -25,9 +25,6 @@ const CreateAccount = () => {
       <Box sx={{display: "flex", flexDirection:"column"}}>
         <form onSubmit={handleSubmit}>
         <Box >
-          <Typography sx={{  fontSize: "2rem" }}>
-           Nuevo Grupo 
-          </Typography>
         </Box>
         <Box padding={1}>
           <TextField

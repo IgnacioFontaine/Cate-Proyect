@@ -42,15 +42,16 @@ router.post("/", async (req, res) => {
     const {
       name,
       cuotas,
+      grupo
       // campamento,
       // hermanos,
-      grupo
     } = req.body;
 
     //Crearlo
     const nuevoPatrullero = await crearPatrulleroDB(
       name,
       cuotas,
+      grupo
       // campamento,
       // hermanos
     );
@@ -59,7 +60,7 @@ router.post("/", async (req, res) => {
     // if (!grupoDB) return res.status(404).send("No se encontro el grupo")
     
     // nuevoPatrullero.addGroup(grupoDB);
-    // console.log(grupoDB.dataValues.name);
+    // console.log(grupoDB);
     
     //Retornarlo
     res.status(200).json(nuevoPatrullero);
@@ -71,11 +72,11 @@ router.post("/", async (req, res) => {
 router.put("/modificar/:id", async (req, res) => {
   const { id } = req.params;
   
-    const { name, cuotas } = req.body;
+    const { name, cuotas, grupo } = req.body;
     try {
         if (!id) return res.status(404).json({ error: 'Id no encontrado' });
         
-        const putGroup = await modificarPatrullero(id, name, cuotas);
+        const putGroup = await modificarPatrullero(id, name, cuotas, grupo);
         return res.status(200).json(putGroup);
     } catch (error) {
         return res.status(500).json({ error: error.message });
