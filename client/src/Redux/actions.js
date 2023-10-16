@@ -126,6 +126,15 @@ export const createUser = (user) => async (dispatch) => {
   return dispatch({ type: CREATE_USER, payload: newUser.data });
 };
 
+export const getUsers = () => async (dispatch) => {
+  try {
+    let result = await axios.get("http://localhost:3001/users");
+    return dispatch({ type: GET_ALL_USERS, payload: result.data });
+  } catch (error) {
+    return dispatch({ type: ERROR, payload: error });
+  }
+};
+
 export const getPatrulleros = () => async (dispatch) => {
   try {
     let result = await axios.get("http://localhost:3001/patrulleros");
