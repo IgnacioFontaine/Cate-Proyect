@@ -11,6 +11,7 @@ import {
   GET_ALL_PATRULLEROS,
   CLEAN_DETAIL,
   ERROR,
+  CREAR_PATRULLERO,
     // SEARCH_GROUP_BY_STATUS,
   // SEARCH_GROUP_BY_NAME,
   // GET_ALL_USERS,
@@ -88,13 +89,29 @@ const reducer = (state = initialState, action) => {
       return {
         ...state, all_groups: state.all_groups.filter(all_groups => all_groups.id !== action.payload)
       };
+    
     case DELETE_GROUP_FAILURE:
       return state;
+    
     case GET_ALL_PATRULLEROS:
       return {
         ...state,
         all_patrulleros: action.payload,
       };
+    
+    case CREAR_PATRULLERO:
+      if (action.payload.status === 200) {
+        return {
+          ...state,
+          errormsg: {},
+        };
+      } else {
+        return {
+          ...state,
+          errormsg: action.payload,
+        };
+      }
+      
     case CLEAN_DETAIL:
       return {
         ...state,

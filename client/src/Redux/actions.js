@@ -16,6 +16,7 @@ export const SEARCH_CATE_GROUPS = "SEARCH_CATE_GROUPS";
 export const SEARCH_INICIATE_GROUPS = "SEARCH_INICIATE_GROUPS";
 export const SEARCH_FAMILIA_GROUPS = "SEARCH_FAMILIA_GROUPS";
 export const GET_ALL_PATRULLEROS = "GET_ALL_PATRULLEROS";
+export const CREAR_PATRULLERO = "CREAR_PATRULLERO";
 export const ERROR = "ERROR";
 
 //Actions:
@@ -23,15 +24,6 @@ export const getAllGroups = () => async (dispatch) => {
   try {
     let result = await axios.get("http://localhost:3001/groups");
     return dispatch({ type: GET_ALL_GROUPS, payload: result.data });
-  } catch (error) {
-    return dispatch({ type: ERROR, payload: error });
-  }
-};
-
-export const getPatrulleros = () => async (dispatch) => {
-  try {
-    let result = await axios.get("http://localhost:3001/patrulleros");
-    return dispatch({ type: GET_ALL_PATRULLEROS, payload: result.data });
   } catch (error) {
     return dispatch({ type: ERROR, payload: error });
   }
@@ -128,6 +120,20 @@ export const createUser = (user) => async (dispatch) => {
   const newUser = await axios.post("http://localhost:3001/user", user);
   return dispatch({ type: CREATE_USER, payload: newUser.data });
 };
+
+export const getPatrulleros = () => async (dispatch) => {
+  try {
+    let result = await axios.get("http://localhost:3001/patrulleros");
+    return dispatch({ type: GET_ALL_PATRULLEROS, payload: result.data });
+  } catch (error) {
+    return dispatch({ type: ERROR, payload: error });
+  }
+};
+
+export const crearPatrullero = (patrullero) => async (dispatch) => {
+  const nuevoPatrullero = await axios.post("http://localhost:3001/patrulleros", patrullero);
+  return dispatch({ type: CREAR_PATRULLERO, payload: nuevoPatrullero.data });
+}
 
 export const cleanDetail = () => (dispatch) => {
   return dispatch({ type: CLEAN_DETAIL });
