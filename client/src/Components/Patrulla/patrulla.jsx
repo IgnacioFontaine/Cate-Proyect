@@ -35,7 +35,8 @@ const Patrulla = () => {
   // const Patrulleros = [{name:"test1", cuotas:"02/09"},{name:"test2", cuotas:"05/09"},{name:"test3", cuotas:"01/09"},{name:"test4", cuotas:"09/09"},{name:"test6", cuotas:"05/09"}, {name:"test7", cuotas:"00/09"}, {name:"test8", cuotas:"02/09"}, {name:"test9", cuotas:"05/09"},{name:"test10", cuotas:"05/09"},{name:"test11", cuotas:"05/09"}]
 
   const handleSelect = (nombre) => {
-    const seleccionados_patrulleros = patrulleros?.filter((patrullero)=>patrullero.grupo === nombre)
+    const seleccionados_patrulleros = patrulleros?.filter((patrullero) => patrullero.grupo === nombre)
+    console.log(seleccionados_patrulleros);
 
     setSeleccionado({
       nombre_grupo: nombre,
@@ -45,8 +46,6 @@ const Patrulla = () => {
     })
     
   }
-  
-  
   
   return (
     <Box>
@@ -92,8 +91,6 @@ const Patrulla = () => {
                   <Box>{row?.name}</Box>
                   <Box>{row?.cuotas}</Box>
                   <Box>{row?.grupo}</Box>
-                  {/* <Box>{row?.campamento}</Box>
-                  <Box>{row?.hermanos}</Box> */}
                   <EditRoundedIcon />
                   </TableCell>
                 </TableRow>
