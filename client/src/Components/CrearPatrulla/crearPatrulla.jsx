@@ -1,9 +1,7 @@
 import { Box, Button, TableHead, TextField, Typography } from "@mui/material";
-import Select from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createGroup, getPatrulleros, deleteGroup, updateGroup  } from "../../Redux/actions"
+import { crearPatrullero, getPatrulleros, eliminarPatrullero, updateGroup  } from "../../Redux/actions"
 import {
   Icon,
   Paper,
@@ -42,7 +40,7 @@ const CrearGrupo = () => {
     event.preventDefault();
  
       if (button.value === "Crear") {
-        dispatch(createGroup(formData));
+        dispatch(crearPatrullero(formData));
       } else {
         dispatch(updateGroup(formData.id, formData));
         setButton({ value: "Crear" });
@@ -51,42 +49,33 @@ const CrearGrupo = () => {
 
   };
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   dispatch(createGroup(formData));
-  //   console.log(formData);
-  // }
-
-    const handleUpdate = (id, name, meaning, release_date, manager, status, acronym) => {
+    const handleUpdate = (id, name, cuotas, grupo) => {
     setFormData({
       id: id,
       name: name,
-      meaning: meaning,
-      release_date: release_date,
-      manager: manager,
-      status: status,
-      acronym:acronym
+      cuotas: cuotas,
+      grupo:grupo
     });
     setButton({ value: "Modificar" });
   };
 
   const handleDelete = (id) => {
-    dispatch(deleteGroup(id));
+    dispatch(eliminarPatrullero(id));
     setFormData(EMPTY_FORM);
   };
 
   const disableSubmitButton = () => {
     if (
       formData.name.length > 0 &&
-      formData.meaning.length > 0 &&
-      formData.acronym.length > 0
+      formData.cuotas.length > 0 &&
+      formData.grupo.length > 0
     ) {
       return false;
     }
     return true;
   };
 
-  const Groups = useSelector((state)=>state?.all_groups)
+  const Patrulleros = useSelector((state)=>state?.all_patrulleros)
 
   return (
     <>
@@ -95,7 +84,7 @@ const CrearGrupo = () => {
         <form onSubmit={handleSubmit}>
         <Box >
           <Typography sx={{  fontSize: "2rem" }}>
-           Nuevo Grupo 
+           Nuevo Patrullero 
           </Typography>
         </Box>
         <Box padding={1}>
@@ -132,42 +121,6 @@ const CrearGrupo = () => {
                 fullWidth
                 margin="normal"
               />
-              
-              <TextField  
-                label="Delegados"
-                variant="outlined"
-                name="manager"
-                autoComplete="off"
-                value={formData.manager}
-                onChange={handleChange}
-                fullWidth
-                margin="normal"
-                    />
-              <TextField  
-                label="Iniciales"
-                variant="outlined"
-                name="acronym"
-                autoComplete="off"
-                value={formData.acronym}
-                onChange={handleChange}
-                fullWidth
-                margin="normal"
-                    />
-              <label>Estado:</label>
-              <Select
-              labelId="Estado"
-            variant="outlined"
-            name="status"
-              id="status"
-              value={formData.status}
-            label="Estado"
-            onChange={handleChange}
-            fullWidth
-  >
-    <MenuItem value={"Cate"}>Cate</MenuItem>
-    <MenuItem value={"Iniciate"}>Iniciate</MenuItem>
-    <MenuItem value={"Familia"}>Familia</MenuItem>
-  </Select>
 
         </Box>
         <Box>
@@ -182,7 +135,7 @@ const CrearGrupo = () => {
         </Box>
       </form>
       </Box>
-      {/* <Box>
+      <Box>
         <TableContainer
           sx={{ height: "60vh",width:"28vw", overflow: "auto", pb: 1, backgroundColor:"#242424", color:"rgba(255, 255, 255, 0.87)", colorScheme:"light dark", boxShadow:1}}
           style={{backgroundImage: 'none'}}
@@ -193,7 +146,7 @@ const CrearGrupo = () => {
                 <Typography variant="h4" >Patrulleros:</Typography>
               </TableHead>
             <TableBody style={{}}>
-              {Groups?.map((row) => (
+              {Patrulleros?.map((row) => (
                 <TableRow key={row?.id}>
                   <TableCell
                     sx={{ display: "flex", justifyContent: "space-between" }}
@@ -214,11 +167,8 @@ const CrearGrupo = () => {
                               handleUpdate(
                                 row?.id,
                                 row?.name,
-                                row?.meaning,
-                                row?.release_date,
-                                row?.manager,
-                                row?.status,
-                                row?.acronym
+                                row?.cuotas,
+                                row?.grupo
                               )
                             }
                           ></EditRoundedIcon>
@@ -231,7 +181,7 @@ const CrearGrupo = () => {
             </TableBody>
           </Table>
         </TableContainer>
-      </Box> */}
+      </Box>
       </Box>
     </>
   );

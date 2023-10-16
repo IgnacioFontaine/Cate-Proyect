@@ -17,6 +17,8 @@ export const SEARCH_INICIATE_GROUPS = "SEARCH_INICIATE_GROUPS";
 export const SEARCH_FAMILIA_GROUPS = "SEARCH_FAMILIA_GROUPS";
 export const GET_ALL_PATRULLEROS = "GET_ALL_PATRULLEROS";
 export const CREAR_PATRULLERO = "CREAR_PATRULLERO";
+export const ELIMINAR_PATRULLERO_EXITO = "ELIMINAR_PATRULLERO_EXITO";
+export const ELIMINAR_PATRULLERO_FRACASO = "ELIMINAR_PATRULLERO_FRACASO";
 export const ERROR = "ERROR";
 
 //Actions:
@@ -134,6 +136,25 @@ export const crearPatrullero = (patrullero) => async (dispatch) => {
   const nuevoPatrullero = await axios.post("http://localhost:3001/patrulleros", patrullero);
   return dispatch({ type: CREAR_PATRULLERO, payload: nuevoPatrullero.data });
 }
+
+export const eliminarPatrullero = (id) => {
+  return async (dispatch) => {
+    try {
+      await axios.delete(`http://localhost:3001/patrulleros/eliminar/${id}`);
+      
+      dispatch({
+        type: ELIMINAR_PATRULLERO_EXITO,
+        payload: id
+      });
+    } catch (error) {
+      dispatch({
+        type: ELIMINAR_PATRULLERO_FRACASO,
+        payload: error.message
+      });
+    }
+  };
+};
+
 
 export const cleanDetail = () => (dispatch) => {
   return dispatch({ type: CLEAN_DETAIL });
