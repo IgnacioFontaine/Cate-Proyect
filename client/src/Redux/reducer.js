@@ -14,6 +14,8 @@ import {
   CREAR_PATRULLERO,
   ELIMINAR_PATRULLERO_EXITO,
   ELIMINAR_PATRULLERO_FRACASO,
+  MODIFICAR_PATRULLERO_FRACASO,
+  MODIFICAR_PATRULLERO_EXITO,
     // SEARCH_GROUP_BY_STATUS,
   // SEARCH_GROUP_BY_NAME,
   // GET_ALL_USERS,
@@ -113,6 +115,22 @@ const reducer = (state = initialState, action) => {
           errormsg: action.payload,
         };
       }
+    
+    case MODIFICAR_PATRULLERO_EXITO:
+      state.all_patrulleros.forEach((patrullero)=>{
+                if(patrullero.id === action.payload.id){
+                    patrullero.name = action.payload.name
+                    patrullero.cuotas = action.payload.cuotas
+                    patrullero.grupo = action.payload.grupo
+                }
+            })
+        return {
+            ...state,
+            all_patrulleros: [...state.all_patrulleros]
+        };
+    
+    case MODIFICAR_PATRULLERO_FRACASO:
+      return state;
 
     case ELIMINAR_PATRULLERO_EXITO:
       return {
