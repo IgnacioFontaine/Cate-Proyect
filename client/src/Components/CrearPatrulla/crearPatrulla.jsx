@@ -1,7 +1,7 @@
 import { Box, Button, TableHead, TextField, Typography } from "@mui/material";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { crearPatrullero, getPatrulleros, eliminarPatrullero, updateGroup  } from "../../Redux/actions"
+import { crearPatrullero, getPatrulleros, eliminarPatrullero, modificarPatrullero  } from "../../Redux/actions"
 import {
   Icon,
   Paper,
@@ -20,7 +20,7 @@ const EMPTY_FORM = {
   grupo:""
 };
 
-const CrearGrupo = () => {
+const CrearPatrullero = () => {
   const dispatch = useDispatch()
   const [formData, setFormData] = useState(EMPTY_FORM);
   const [button, setButton] = useState({
@@ -42,7 +42,7 @@ const CrearGrupo = () => {
       if (button.value === "Crear") {
         dispatch(crearPatrullero(formData));
       } else {
-        dispatch(updateGroup(formData.id, formData));
+        dispatch(modificarPatrullero(formData.id, formData));
         setButton({ value: "Crear" });
       }
       setFormData(EMPTY_FORM);
@@ -152,6 +152,7 @@ const CrearGrupo = () => {
                     sx={{ display: "flex", justifyContent: "space-between" }}
                   >
                     <Box>{row?.name}</Box>
+                    <Box>{row?.grupo}</Box>
                     <Box sx={{ display: "flex" }}>
                       <Box sx={{ cursor: "pointer" }}>
                         <Icon>
@@ -187,4 +188,4 @@ const CrearGrupo = () => {
   );
 };
 
-export default CrearGrupo;
+export default CrearPatrullero;
