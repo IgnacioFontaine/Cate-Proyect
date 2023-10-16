@@ -19,6 +19,9 @@ export const GET_ALL_PATRULLEROS = "GET_ALL_PATRULLEROS";
 export const CREAR_PATRULLERO = "CREAR_PATRULLERO";
 export const ELIMINAR_PATRULLERO_EXITO = "ELIMINAR_PATRULLERO_EXITO";
 export const ELIMINAR_PATRULLERO_FRACASO = "ELIMINAR_PATRULLERO_FRACASO";
+export const MODIFICAR_PATRULLERO_EXITO = "MODIFICAR_PATRULLERO_EXITO";
+export const MODIFICAR_PATRULLERO_FRACASO = "MODIFICAR_PATRULLERO_FRACASO";
+
 export const ERROR = "ERROR";
 
 //Actions:
@@ -149,6 +152,25 @@ export const eliminarPatrullero = (id) => {
     } catch (error) {
       dispatch({
         type: ELIMINAR_PATRULLERO_FRACASO,
+        payload: error.message
+      });
+    }
+  };
+};
+
+export const modificarPatrullero = (id, updatedFields) => {
+  return async (dispatch) => {
+    try {
+
+      await axios.put(`http://localhost:3001/patrulleros/modificar/${id}`, updatedFields);
+
+      dispatch({
+        type: MODIFICAR_PATRULLERO_EXITO,
+        payload: updatedFields
+      });
+    } catch (error) {
+      dispatch({
+        type: MODIFICAR_PATRULLERO_FRACASO,
         payload: error.message
       });
     }
