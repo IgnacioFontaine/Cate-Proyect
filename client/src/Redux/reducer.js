@@ -12,6 +12,8 @@ import {
   CLEAN_DETAIL,
   ERROR,
   CREAR_PATRULLERO,
+  ELIMINAR_PATRULLERO_EXITO,
+  ELIMINAR_PATRULLERO_FRACASO,
     // SEARCH_GROUP_BY_STATUS,
   // SEARCH_GROUP_BY_NAME,
   // GET_ALL_USERS,
@@ -111,7 +113,15 @@ const reducer = (state = initialState, action) => {
           errormsg: action.payload,
         };
       }
-      
+
+    case ELIMINAR_PATRULLERO_EXITO:
+      return {
+        ...state, all_patrulleros: state.all_patrulleros.filter(all_patrulleros => all_patrulleros.id !== action.payload)
+      };
+    
+    case ELIMINAR_PATRULLERO_FRACASO:
+      return state;
+
     case CLEAN_DETAIL:
       return {
         ...state,
