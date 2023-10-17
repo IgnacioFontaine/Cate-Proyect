@@ -1,6 +1,7 @@
 import {Box,Typography, TextField, Button } from "@mui/material"
 import { useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
+import { useAuth } from "../../auth/authProvider";
+import { Navigate } from "react-router-dom";
 
 const EMPTY_FORM = {
   email: "",
@@ -8,14 +9,42 @@ const EMPTY_FORM = {
 };
 
 const Login = () => {
+  const auth = useAuth()
   const [formData, setFormData] = useState(EMPTY_FORM);
-
-  const handleSubmit = (event) => {
-    event.preventDefaul()
-  }
+  // const [errorResponse, setErrorResponse] = useState("");
 
   const handleChange = (event) =>
     setFormData({ ...formData, [event.target.name]: event.target.value });
+  
+  async function handleSubmit(event) {
+    event.preventDefault();
+    // auth.setEstaAutenticado(true);
+
+    // try {
+    //   const response = await fetch("http://localhost:3000/api/login", {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify(formData),
+    //   });
+    //   if (response.ok) {
+    //     const json = (await response.json());
+    //     console.log(json);
+
+    //     if (json.body.accessToken && json.body.refreshToken) {
+    //       auth.saveUser(json);
+    //     }
+    //   } else {
+    //     const json = (await response.json());
+
+    //     setErrorResponse(json.body.error);
+    //   }
+    // } catch (error) {
+    //   console.log(error);
+    // }
+  }
+  if (auth.estaAutenticado) {
+    return <Navigate to="/dashboard" />;
+  }
   
   return (
     <Box sx={{ display: "flex", flexDirection:"column", alignItems:"center"}}>
