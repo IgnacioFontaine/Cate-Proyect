@@ -1,8 +1,8 @@
 import { Outlet, Navigate } from "react-router-dom";
-import { useState } from "react";
+import { useAuth } from "../../auth/authProvider";
 
 export default function ProtejerRuta() {
-  const [estaAutenticado, setEstaAutenticado] = useState(false)
+  const auth = useAuth()
 
-  return estaAutenticado ? <Outlet /> : <Navigate to="/" />
+  return auth.estaAutenticado ? <Outlet /> : <Navigate to="/" />
 }
