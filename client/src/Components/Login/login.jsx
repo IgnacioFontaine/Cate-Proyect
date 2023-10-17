@@ -7,7 +7,7 @@ const EMPTY_FORM = {
   contraseña:""
 };
 
-const CreateAccount = () => {
+const Login = () => {
   const [formData, setFormData] = useState(EMPTY_FORM);
 
   const handleSubmit = (event) => {
@@ -50,8 +50,6 @@ const CreateAccount = () => {
                 margin="normal"
 
               />
-
-              
         </Box>
         <Box>
           <Button
@@ -68,4 +66,4 @@ const CreateAccount = () => {
   );
 };
 
-export default CreateAccount;
+export default Login;
