@@ -11,6 +11,7 @@ import Patrulla from "./Components/Patrulla/patrulla";
 import Footer from "./Components/Footer/footer";
 import CrearPatrullero from "./Components/CrearPatrulla/crearPatrulla";
 import Error from "./Components/Error/error";
+import ProtejerRuta from "./Components/RutaProtegida/rutaProtegida";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login />}  />
         <Route path="/apostolate" element={<Apostolate />} />
         <Route path="/familia" element={<Familia />} />
         <Route path="/creargrupo" element={<CrearGrupo />} />
