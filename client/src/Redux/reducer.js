@@ -16,27 +16,27 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_ALL_GROUPS:
+    case ACTION_TYPES.GET_ALL_GROUPS:
       return {
         ...state,
         all_groups: action.payload,
       };
-    case SEARCH_CATE_GROUPS:
+    case ACTION_TYPES.SEARCH_CATE_GROUPS:
       return {
         ...state,
         cate_groups: action.payload,
       };
-    case SEARCH_INICIATE_GROUPS:
+    case ACTION_TYPES.SEARCH_INICIATE_GROUPS:
       return {
         ...state,
         iniciate_groups: action.payload,
       };
-    case SEARCH_FAMILIA_GROUPS:
+    case ACTION_TYPES.SEARCH_FAMILIA_GROUPS:
       return {
         ...state,
         family_groups: action.payload,
       };
-    case CREATE_GROUP:
+    case ACTION_TYPES.CREATE_GROUP:
       if (action.payload.status === 200) {
         return {
           ...state,
@@ -48,7 +48,7 @@ const reducer = (state = initialState, action) => {
           errormsg: action.payload,
         };
       }
-    case UPDATE_GROUP_SUCCESS:
+    case ACTION_TYPES.UPDATE_GROUP_SUCCESS:
       state.all_groups.forEach((group)=>{
                 if(group.id === action.payload.id){
                     group.name = action.payload.name
@@ -64,18 +64,18 @@ const reducer = (state = initialState, action) => {
             all_groups: [...state.all_groups]
         };
     
-    case UPDATE_GROUP_FAILURE:
+    case ACTION_TYPES.UPDATE_GROUP_FAILURE:
       return state;
     
-    case DELETE_GROUP_SUCCESS:
+    case ACTION_TYPES.DELETE_GROUP_SUCCESS:
       return {
         ...state, all_groups: state.all_groups.filter(all_groups => all_groups.id !== action.payload)
       };
     
-    case DELETE_GROUP_FAILURE:
+    case ACTION_TYPES.DELETE_GROUP_FAILURE:
       return state;
     
-    case GET_ALL_PATRULLEROS:
+    case ACTION_TYPES.GET_ALL_PATRULLEROS:
       return {
         ...state,
         all_patrulleros: action.payload,
