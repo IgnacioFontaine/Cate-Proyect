@@ -11,6 +11,7 @@ import Patrulla from "./Components/Patrulla/patrulla";
 import Footer from "./Components/Footer/footer";
 import CrearPatrullero from "./Components/CrearPatrulla/crearPatrulla";
 import Error from "./Components/Error/error";
+import { AuthenticationGuard } from "./components/Auth0/AuthenticationGuard/AuthenticationGuard";
 
 
 function App() {
