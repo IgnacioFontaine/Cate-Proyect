@@ -1,23 +1,23 @@
 import axios from "axios";
-
+import ACTION_TYPES from '../../actionTypes'
 
 
 //Actions:
 export const getAllGroups = () => async (dispatch) => {
   try {
     let result = await axios.get("http://localhost:3001/groups");
-    return dispatch({ type: GET_ALL_GROUPS, payload: result.data });
+    return dispatch({ type: ACTION_TYPES.GET_ALL_GROUPS, payload: result.data });
   } catch (error) {
-    return dispatch({ type: ERROR, payload: error });
+    return dispatch({ type: ACTION_TYPES.ERROR, payload: error });
   }
 };
 
 export const searchGroupByName = (name) => async (dispatch) => {
   try {
     let result = await axios.get(`http://localhost:3001/group?name=${name}`);
-    return dispatch({ type: SEARCH_GROUP_BY_NAME, payload: result.data });
+    return dispatch({ type: ACTION_TYPES.SEARCH_GROUP_BY_NAME, payload: result.data });
   } catch (error) {
-    return dispatch({ type: ERROR, payload: error });
+    return dispatch({ type: ACTION_TYPES.ERROR, payload: error });
   }
 };
 
