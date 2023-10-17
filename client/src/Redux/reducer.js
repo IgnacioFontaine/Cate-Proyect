@@ -81,7 +81,7 @@ const reducer = (state = initialState, action) => {
         all_patrulleros: action.payload,
       };
     
-    case CREAR_PATRULLERO:
+    case ACTION_TYPES.CREAR_PATRULLERO:
       if (action.payload.status === 200) {
         return {
           ...state,
@@ -94,7 +94,7 @@ const reducer = (state = initialState, action) => {
         };
       }
     
-    case MODIFICAR_PATRULLERO_EXITO:
+    case ACTION_TYPES.MODIFICAR_PATRULLERO_EXITO:
       state.all_patrulleros.forEach((patrullero)=>{
                 if(patrullero.id === action.payload.id){
                     patrullero.name = action.payload.name
@@ -107,23 +107,23 @@ const reducer = (state = initialState, action) => {
             all_patrulleros: [...state.all_patrulleros]
         };
     
-    case MODIFICAR_PATRULLERO_FRACASO:
+    case ACTION_TYPES.MODIFICAR_PATRULLERO_FRACASO:
       return state;
 
-    case ELIMINAR_PATRULLERO_EXITO:
+    case ACTION_TYPES.ELIMINAR_PATRULLERO_EXITO:
       return {
         ...state, all_patrulleros: state.all_patrulleros.filter(all_patrulleros => all_patrulleros.id !== action.payload)
       };
     
-    case ELIMINAR_PATRULLERO_FRACASO:
+    case ACTION_TYPES.ELIMINAR_PATRULLERO_FRACASO:
       return state;
 
-    case CLEAN_DETAIL:
+    case ACTION_TYPES.CLEAN_DETAIL:
       return {
         ...state,
         detail: [],
       };
-    case ERROR:
+    case ACTION_TYPES.ERROR:
       return {
         ...state,
         error: true,
