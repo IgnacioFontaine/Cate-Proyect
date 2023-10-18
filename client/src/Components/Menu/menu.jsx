@@ -5,6 +5,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Fade from '@mui/material/Fade';
 import { useNavigate } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
+import { useAuth0 } from "@auth0/auth0-react";
 
 export default function FadeMenu() {
   const navigate = useNavigate()
@@ -16,6 +17,8 @@ export default function FadeMenu() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const { loginWithRedirect, logout } = useAuth0();
 
   return (
     <div>
@@ -45,7 +48,9 @@ export default function FadeMenu() {
         <MenuItem onClick={() => navigate("/creargrupo")}>Nuevo Grupo</MenuItem>
         <MenuItem onClick={()=>navigate("/crearpatrullero")}>Nuevo Patrullero</MenuItem>
         <MenuItem onClick={() => navigate("/oracion")}>Oración</MenuItem>
-        <MenuItem onClick={()=>navigate("/login")}>Comando</MenuItem>
+        <MenuItem onClick={() => loginWithRedirect()}>Comando</MenuItem>
+        <MenuItem onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
+      Log Out</MenuItem>
       </Menu>
     </div>
   );
