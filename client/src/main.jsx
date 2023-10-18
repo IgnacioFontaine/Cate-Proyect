@@ -10,7 +10,12 @@ import store from "./Redux/store.js"
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Auth0Provider>
+    <Auth0Provider
+    domain="dev-zx5u1z2uxn3grwex.us.auth0.com"
+    clientId="nrpxsbfEP6Vop6gDY6VJxtQdrFUwMszt"
+    authorizationParams={{
+      redirect_uri: window.location.origin
+    }}>
       <BrowserRouter>
         <Provider store={store}>
           <App />
