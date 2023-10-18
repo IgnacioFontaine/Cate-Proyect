@@ -11,7 +11,7 @@ import Patrulla from "./Components/Patrulla/patrulla";
 import Footer from "./Components/Footer/footer";
 import CrearPatrullero from "./Components/CrearPatrulla/crearPatrulla";
 import Error from "./Components/Error/error";
-import { AuthenticationGuard } from "./components/Auth0/AuthenticationGuard/AuthenticationGuard";
+// import { AuthenticationGuard } from "./components/Auth0/AuthenticationGuard/AuthenticationGuard";
 
 
 function App() {
@@ -22,9 +22,12 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/apostolate" element={<Apostolate />} />
         <Route path="/familia" element={<Familia />} />
-        <Route path="/creargrupo" element={<AuthenticationGuard component={CrearGrupo} />} />
+        <Route path="/creargrupo" element={<CrearGrupo />} />
+        <Route path="/crearpatrullero" element={<CrearPatrullero/>} />
+        <Route path="/patrulla" element={<Patrulla />} />
+        {/* <Route path="/creargrupo" element={<AuthenticationGuard component={CrearGrupo} />} />
         <Route path="/crearpatrullero" element={<AuthenticationGuard component={CrearPatrullero} />} />
-        <Route path="/patrulla" element={<AuthenticationGuard component={Patrulla} />} />
+        <Route path="/patrulla" element={<AuthenticationGuard component={Patrulla} />} /> */}
         <Route path="/oracion" element={<Oracion />} />
         <Route path="*" element={<Error />} />
       </Routes>
