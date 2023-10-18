@@ -20,7 +20,7 @@ export default function GuestFooter() {
             justifyContent: "center",
             display: "flex",
             my: 1,
-            color:"initial"
+            color:"black"
           }}
         >Todos los derechos reservados
         </Box>
@@ -33,7 +33,7 @@ export default function GuestFooter() {
             mb: 1,
           }}
         >
-          <Typography variant="caption" color="initial">
+          <Typography variant="caption" color="black">
             Copyright ©2023. [] Limited
           </Typography>
         </Box>

@@ -20,17 +20,17 @@ const Home = () => {
   
 
   return (
-    <Box sx={{ height: "120vh", boxShadow: 4 }}>
+    <Box sx={{ height: "135vh", boxShadow: 2 }}>
       <Box>
         <Box>
           <Box>
             <Box>
-              <Box sx={{ boxShadow: 1, margin:2 }}>
+              <Box sx={{ boxShadow: 1, margin: 2, gap:3 }}>
                 <Box>
                   <Typography variant="h4">¿Quiénes Somos?</Typography>
                   <Typography variant="body1">El grupo juvenil la Catedral es un grupo católico administrado por jóvenes y para jóvenes, este grupo está compuesto por 3 partes que conforman una gran familia! La Cate en la cual se encuentran los grupos cuyos jóvenes están cursando de 4to a 1er año de la Facultad, El Iniciate cuyoos jóvenes cursan de 1ero a 3er año y el Apostolate compuesto por aquellos mayores a 18 años con ganas de Misionar! </Typography>
                 </Box>
-                <Box >
+                <Box sx={{alignContent:"flex-end", bgcolor:"#f0fb4b", color:"black"}} >
                   <Typography variant="h4">¿Dónde encontrarnos? <Link
                 to="https://www.instagram.com/grupocate/"
                 target="_blanck"
@@ -39,7 +39,7 @@ const Home = () => {
                   </Link></Typography>
                   <Typography variant="body2">Podés encontrarnos en redes sociales o en el colegio San José/Santa Teresa en el centro los días sábado, las inscripciones se realizan a principio de año y avisamos via Instagram! </Typography>
                 </Box>
-                <Box>
+                <Box sx={{alignContent:"flex-start", bgcolor:"#f0fb4b", color:"black"}}>
                   <Typography variant="h4">Nuestras actividades</Typography>
                   <Typography variant="body2">Nos encontramos en un colegio en el centro los días Sábado para compartir la merienda y conversar un tema en especial, este tema es elegido por los Delegados a cargo de cada grupo, finalizando las actividades con una Misa en La Catedral de Córdoba</Typography>
                 </Box>

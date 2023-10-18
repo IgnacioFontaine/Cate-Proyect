@@ -8,12 +8,12 @@ const NavBar = () => {
               <Avatar
           alt="LaCate"
           src={LogoCate}
-          sx={{ width: 70, height: 70 }}
+          sx={{ width: 72, height: 72, color:"black", backgroundColor:"orange" }}
 />
       </Box>
       <Box display={"flex"} flexDirection={"column"} alignItems={"center"} >
       <Typography variant="h2">Grupo Juvenil La Catedral</Typography>
-      <Typography variant="h5">Gracias por invitarnos a ser Libres, Felices y Santos</Typography>
+      <Typography variant="h5" sx={{color:"orange"}}>Gracias por invitarnos a ser Libres, Felices y Santos</Typography>
     </Box>
       <Box sx={{display:"flex", height:2, textAlign:"center", alignContent:"end"}}>
         <Menu />
