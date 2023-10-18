@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./Components/Home/home";
 import Oracion from "./Components/Oracion/oracion";
 import Familia from "./Components/Familia/familia";
-import Login from "./Components/Login/login"
+// import Login from "./Components/Login/login"
 import CrearGrupo from "./Components/CreateGroup/crearGrupo";
 import NavBar from "./Components/NavBar/navbar";
 import Apostolate from "./Components/Apostolate/apostolate";
@@ -20,12 +20,11 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />}  />
         <Route path="/apostolate" element={<Apostolate />} />
         <Route path="/familia" element={<Familia />} />
-        <Route path="/creargrupo" element={<CrearGrupo />} />
-        <Route path="/crearpatrullero" element={<CrearPatrullero />} />
-        <Route path="/patrulla" element={<Patrulla />} />
+        <Route path="/creargrupo" element={<AuthenticationGuard component={CrearGrupo} />} />
+        <Route path="/crearpatrullero" element={<AuthenticationGuard component={CrearPatrullero} />} />
+        <Route path="/patrulla" element={<AuthenticationGuard component={Patrulla} />} />
         <Route path="/oracion" element={<Oracion />} />
         <Route path="*" element={<Error />} />
       </Routes>
