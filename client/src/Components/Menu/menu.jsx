@@ -5,10 +5,10 @@ import MenuItem from '@mui/material/MenuItem';
 import Fade from '@mui/material/Fade';
 import { useNavigate } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
-import { useAuth0 } from "@auth0/auth0-react";
+// import { useAuth0 } from "@auth0/auth0-react";
 
 export default function FadeMenu() {
-  const { loginWithRedirect, logout } = useAuth0();
+  // const { loginWithRedirect, logout } = useAuth0();
 
   const navigate = useNavigate()
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -46,12 +46,12 @@ export default function FadeMenu() {
         <MenuItem onClick={() => navigate("/familia")}>Egresados</MenuItem>
         <MenuItem onClick={()=>navigate("/apostolate")}>Apostolate</MenuItem>
         <MenuItem onClick={() => navigate("/oracion")}>Oración</MenuItem>
-        <MenuItem onClick={() => loginWithRedirect()}>Comando</MenuItem>
+        {/* <MenuItem onClick={() => loginWithRedirect()}>Comando</MenuItem> */}
         <MenuItem onClick={()=>navigate("/patrulla")}>Patrulla</MenuItem>
         <MenuItem onClick={() => navigate("/creargrupo")}>Nuevo Grupo</MenuItem>
         <MenuItem onClick={()=>navigate("/crearpatrullero")}>Nuevo Patrullero</MenuItem>
-        <MenuItem onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
-            Log Out</MenuItem>
+        {/* <MenuItem onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
+            Log Out</MenuItem> */}
       </Menu>
     </div>
     )

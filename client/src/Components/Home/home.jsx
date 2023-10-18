@@ -14,12 +14,13 @@ const Home = () => {
     dispatch(searchCateGroups())
     dispatch(searchIniciateGroups())
   }, [dispatch]);
+
   const gruposCate = useSelector((state) => state.cate_groups)
   const gruposIniciate = useSelector((state) => state.iniciate_groups)
   
 
   return (
-    <Box sx={{height:"120vh", boxShadow:4}}>
+    <Box sx={{ height: "120vh", boxShadow: 4 }}>
       <Box>
         <Box>
           <Box>
@@ -65,7 +66,7 @@ const Home = () => {
             </Box>
           </Box>
         </Box>
-      </Box>
+      </Box> 
     </Box>
   );
 };
