@@ -93,7 +93,7 @@ const CrearGrupo = () => {
 
   return (
     <>
-      <Box sx={{display:"flex", gap:"5px"}}>
+      <Box sx={{display:"flex", gap:"5px", height:"70vh"}}>
         <Box>
         <form onSubmit={handleSubmit}>
         <Box >

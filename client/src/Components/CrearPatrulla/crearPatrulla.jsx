@@ -79,7 +79,7 @@ const CrearPatrullero = () => {
 
   return (
     <>
-      <Box sx={{display:"flex", gap:"5px"}}>
+      <Box sx={{display:"flex", gap:"5px", height:"60vh"}}>
         <Box>
         <form onSubmit={handleSubmit}>
         <Box >
@@ -137,7 +137,7 @@ const CrearPatrullero = () => {
       </Box>
       <Box>
         <TableContainer
-          sx={{ height: "60vh",width:"28vw", overflow: "auto", pb: 1, backgroundColor:"#242424", color:"rgba(255, 255, 255, 0.87)", colorScheme:"light dark", boxShadow:1}}
+          sx={{ height: "60vh",width:"28vw", overflow: "auto", pb: 1, backgroundColor:"transparent", color:"rgba(255, 255, 255, 0.87)", colorScheme:"light dark"}}
           style={{backgroundImage: 'none'}}
           component={Paper}
         >
