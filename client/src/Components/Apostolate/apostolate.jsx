@@ -4,8 +4,8 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 
 const Apostolate = () => {
   return (
-    <Box>
-      <Box sx={{boxShadow:1}}>
+    <Box sx={{height:"90vh"}}>
+      <Box sx={{mb:3}}>
         <Typography variant="h3">Apostolate <Link
                 to="https://www.instagram.com/grupoapostolate/"
                 target="_blanck"
@@ -16,7 +16,7 @@ const Apostolate = () => {
       </Box>
         <Grid
           container
-          spacing={2}
+          spacing={3}
           direction="column"
           justifyContent="space-evenly">
       <Grid item xs={12} alignItems="flex-start">

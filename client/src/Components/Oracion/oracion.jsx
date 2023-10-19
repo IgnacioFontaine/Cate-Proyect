@@ -7,7 +7,7 @@ const Oracion = () => {
         <Typography variant="h2">Oración de la Cate</Typography>
       </Box>
       <Box>
-        <Typography variant="h4">Señor, que en la cruz de tu hijo Jesús nos mostraste tu grandeza y misericordia, queremos alabarte.
+        <Typography variant="h4" >Señor, que en la cruz de tu hijo Jesús nos mostraste tu grandeza y misericordia, queremos alabarte.
           Gracias Padre por llamarnos a vivir en la Iglesia, familia de los que creen en Ti.
           Gracias por amarnos, darnos la vida, nuestras familias y el pan de cada día.
           Gracias por la Cate que nos acerca a ti.

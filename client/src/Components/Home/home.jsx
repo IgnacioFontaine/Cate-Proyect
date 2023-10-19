@@ -20,7 +20,7 @@ const Home = () => {
   
 
   return (
-    <Box sx={{ height: "135vh", boxShadow: 2 }}>
+    <Box sx={{ height: "150vh", boxShadow: 2 }}>
       <Box>
         <Box>
           <Box>

@@ -8,7 +8,7 @@ export default function GuestFooter() {
     background:"none",
     bottom: 0,
     textAlign: "center",
-      display: "flex",
+    display: "flex",
     flexDirection:"column",
     justifyContent:"center"
     
