@@ -40,7 +40,7 @@ const Patrulla = () => {
     <Box>
       <Box sx={{display:"flex", gap:3}}>
         <TableContainer
-          sx={{ height: "35vh",width:"30vw", overflow: "auto", pb: 1, backgroundColor:"#242424", color:"rgba(255, 255, 255, 0.87)", colorScheme:"light dark", boxShadow:1}}
+          sx={{ height: "35vh",width:"30vw", overflow: "auto", pb: 1, backgroundColor:"transparent", color:"rgba(255, 255, 255, 0.87)", colorScheme:"light dark"}}
           style={{backgroundImage: 'none'}}
           component={Paper}
         >
@@ -61,7 +61,7 @@ const Patrulla = () => {
             </TableBody>
           </Table>
         </TableContainer>
-        <TableContainer sx={{ height: "35vh",width:"50vw",textAlign:"center", alignItems:"center" ,overflow: "auto", pb: 1, backgroundColor:"#242424", color:"rgba(255, 255, 255, 0.87)", colorScheme:"light dark", boxShadow:1}}
+        <TableContainer sx={{ height: "35vh",width:"50vw",textAlign:"center", alignItems:"center" ,overflow: "auto", pb: 1, backgroundColor:"transparent", color:"rgba(255, 255, 255, 0.87)", colorScheme:"light dark"}}
           style={{backgroundImage: 'none'}}
           component={Paper}>
           <Table>
