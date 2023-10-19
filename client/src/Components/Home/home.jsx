@@ -50,10 +50,10 @@ const Home = () => {
                 <Typography variant="h4">Navegá por todos los grupos de La Cate:</Typography>
               </Box>
             </Box>
-            <Box sx={{height:"50vh"}}>
+            <Box sx={{height:"90vh", width:"75vw"}}>
               <Box sx={{gap:1, boxShadow:1, padding:0.5, height:"40vh"}}>
                 <Typography variant="h4">Grupos Cate:</Typography>
-                <Box display={"flex"}>
+                <Box display={"flex"} flexWrap={"wrap"} gap={0.5} height={"4vh"} >
                 {gruposCate? gruposCate.map(group=><Card group={group} key={group.id} />):null}
                 </Box>
               </Box>

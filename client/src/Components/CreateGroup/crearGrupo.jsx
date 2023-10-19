@@ -126,7 +126,6 @@ const CrearGrupo = () => {
               />
 
               <TextField
-                label="Surgimiento"
                 type="date"
                 variant="outlined"
                 name="release_date"
@@ -188,7 +187,7 @@ const CrearGrupo = () => {
       </Box>
       <Box>
         <TableContainer
-          sx={{ height: "60vh",width:"28vw", overflow: "auto", pb: 1, backgroundColor:"#242424", color:"rgba(255, 255, 255, 0.87)", colorScheme:"light dark", boxShadow:1}}
+          sx={{ height: "60vh",width:"28vw", overflow: "auto", pb: 1, backgroundColor:"transparent", color:"rgba(255, 255, 255, 0.87)", colorScheme:"light dark", mt:5}}
           style={{backgroundImage: 'none'}}
           component={Paper}
         >

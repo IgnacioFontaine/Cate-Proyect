@@ -12,7 +12,7 @@ const NavBar = () => {
 />
       </Box>
       <Box display={"flex"} flexDirection={"column"} alignItems={"center"} >
-      <Typography variant="h2">Grupo Juvenil La Catedral</Typography>
+      <Typography variant="h2" >Grupo Juvenil La Catedral</Typography>
       <Typography variant="h5" sx={{color:"orange"}}>Gracias por invitarnos a ser Libres, Felices y Santos</Typography>
     </Box>
       <Box sx={{display:"flex", height:2, textAlign:"center", alignContent:"end"}}>
