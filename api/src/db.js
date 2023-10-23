@@ -43,7 +43,7 @@ const { User, Group, Patrullero } = sequelize.models;
 
 // Relaciones
 Group.hasMany(Patrullero);
-Patrullero.hasOne(Group);
+Patrullero.belongsTo(Group);
 
 module.exports = {
   ...sequelize.models,
