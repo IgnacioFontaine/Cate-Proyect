@@ -20,9 +20,6 @@ module.exports = (sequelize) => {
       cuotas: {
         type: DataTypes.STRING
       },
-      grupo: {
-        type: DataTypes.STRING
-      }
       // campamento: {
       //   type: DataTypes.STRING,
       //   defaultValue: "0"
